@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Élégant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient 8s ease infinite;
+            background-size: 300% 300%;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+        
+        .hover-scale {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.03);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: var(--primary);
+            transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .animate-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        
+        .project-card:hover::before {
+            opacity: 0.15;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--dark);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -16px;
+            top: 16px;
+            width: 2px;
+            height: calc(100% - 16px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .skill-circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .skill-circle svg {
+            transform: rotate(-90deg);
+        }
+        
+        .skill-circle circle {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 314;
+            stroke-dashoffset: 314;
+            transition: stroke-dashoffset 1.5s ease;
+        }
+        
+        .skill-circle .progress {
+            stroke: url(#gradient);
+        }
+        
+        .skill-circle .bg {
+            stroke: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full glass-card z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold gradient-text">Portfolio</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Accueil</a>
+                        <a href="#about" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">À propos</a>
+                        <a href="#skills" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Compétences</a>
+                        <a href="#work" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Expérience</a>
+                        <a href="#projects" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Projets</a>
+                        <a href="#contact" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden glass-card">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Accueil</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white">À propos</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Compétences</a>
+                <a href="#work" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Expérience</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Projets</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0 animate-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 title-font">Bonjour, je suis <span class="gradient-text">JEREMIE HARDING</span></h1>
+                <h2 class="text-2xl md:text-3xl font-semibold text-gray-300 mb-8">Designer & Développeur Full Stack</h2>
+                <p class="text-lg text-gray-400 mb-8 max-w-lg">Je crée des expériences digitales élégantes et performantes, alliant design moderne et technologies innovantes.</p>
+                <div class="flex space-x-4">
+                    <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-medium hover-scale shadow-lg">
+                        Voir mes projets
+                    </a>
+                    <a href="#contact" class="px-8 py-3 border border-blue-600 text-blue-400 hover:bg-blue-900/30 rounded-lg font-medium hover-scale">
+                        Me contacter
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center animate-in" style="animation-delay: 0.2s;">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-500/30 floating">
+                    <img src="homme1.jpg" 
+                         alt="Profile" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-500/10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">À <span class="gradient-text">propos</span> de moi</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+        </div>
+        
+        <div class="flex flex-col md:flex-row items-center glass-card p-8 rounded-2xl hover-scale">
+            <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center animate-in">
+                <div class="relative w-64 h-64 rounded-2xl overflow-hidden border-2 border-blue-500/20">
+                    <img src="IMG.jpg" 
+                         alt="About" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+                </div>
+            </div>
+            <div class="md:w-2/3 md:pl-12 animate-in" style="animation-delay: 0.2s;">
+                <h3 class="text-2xl font-semibold mb-6 title-font">Qui suis-je ?</h3>
+                <p class="text-gray-400 mb-6">Je suis un designer et développeur passionnée dans la création d'interfaces utilisateur élégantes et d'applications web performantes. Mon approche combine une sensibilité artistique avec une rigueur technique.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-slate-800/50 p-6 rounded-xl hover-scale">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-palette text-blue-400 text-xl"></i>
+                            </div>
+                            <h4 class="font-medium text-lg">Design UI/UX</h4>
+                        </div>
+                        <p class="text-gray-400">Conception d'interfaces intuitives et esthétiques avec une attention particulière à l'expérience utilisateur.</p>
+                    </div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl hover-scale">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-code text-purple-400 text-xl"></i>
+                            </div>
+                            <h4 class="font-medium text-lg">Développement Web</h4>
+                        </div>
+                        <p class="text-gray-400">Création d'applications web modernes avec les dernières technologies et frameworks.</p>
+                    </div>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                    <span>Télécharger mon CV</span>
+                    <i class="fas fa-download ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">Mes <span class="gradient-text">compétences</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="animate-in">
+                <h3 class="text-2xl font-semibold mb-8 title-font">Compétences techniques</h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div class="flex flex-col items-center">
+                        <div class="skill-circle mb-4">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#3b82f6" />
+                                        <stop offset="100%" stop-color="#8b5cf6" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="bg" cx="60" cy="60" r="50" />
+                                <circle class="progress" cx="60" cy="60" r="50" data-percent="95" />
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center text-xl font-bold">95%</div>
+                        </div>
+                        <span class="text-gray-300">HTML/CSS</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="skill-circle mb-4">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="bg" cx="60" cy="60" r="50" />
+                                <circle class="progress" cx="60" cy="60" r="50" data-percent="60" />
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center text-xl font-bold">60%</div>
+                        </div>
+                        <span class="text-gray-300">JavaScript</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="skill-circle mb-4">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="bg" cx="60" cy="60" r="50" />
+                                <circle class="progress" cx="60" cy="60" r="50" data-percent="50" />
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center text-xl font-bold">50%</div>
+                        </div>
+                        <span class="text-gray-300">PhP</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="skill-circle mb-4">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="bg" cx="60" cy="60" r="50" />
+                                <circle class="progress" cx="60" cy="60" r="50" data-percent="20" />
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center text-xl font-bold">20%</div>
+                        </div>
+                        <span class="text-gray-300">Node.js</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="skill-circle mb-4">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="bg" cx="60" cy="60" r="50" />
+                                <circle class="progress" cx="60" cy="60" r="50" data-percent="75" />
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center text-xl font-bold">75%</div>
+                        </div>
+                        <span class="text-gray-300">UI/UX Design</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="skill-circle mb-4">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="bg" cx="60" cy="60" r="50" />
+                                <circle class="progress" cx="60" cy="60" r="50" data-percent="80" />
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center text-xl font-bold">80%</div>
+                        </div>
+                        <span class="text-gray-300">Laravel</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="animate-in" style="animation-delay: 0.2s;">
+                <h3 class="text-2xl font-semibold mb-8 title-font">Autres compétences</h3>
+                
+                <div class="space-y-6">
+                    <div class="glass-card p-6 rounded-xl hover-scale">
+                        <div class="flex items-center">
+                            <div class="w-14 h-14 rounded-lg bg-blue-500/10 flex items-center justify-center mr-6">
+                                <i class="fas fa-paint-brush text-blue-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg mb-1">Design Créatif</h4>
+                                <p class="text-gray-400">Création d'identités visuelles et d'interfaces uniques et mémorables.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-6 rounded-xl hover-scale">
+                        <div class="flex items-center">
+                            <div class="w-14 h-14 rounded-lg bg-purple-500/10 flex items-center justify-center mr-6">
+                                <i class="fas fa-users text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg mb-1">Travail d'équipe</h4>
+                                <p class="text-gray-400">Collaboration efficace avec designers, développeurs et clients.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-6 rounded-xl hover-scale">
+                        <div class="flex items-center">
+                            <div class="w-14 h-14 rounded-lg bg-green-500/10 flex items-center justify-center mr-6">
+                                <i class="fas fa-lightbulb text-green-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg mb-1">Résolution de problèmes</h4>
+                                <p class="text-gray-400">Approche analytique pour résoudre des défis techniques complexes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-6 rounded-xl hover-scale">
+                        <div class="flex items-center">
+                            <div class="w-14 h-14 rounded-lg bg-yellow-500/10 flex items-center justify-center mr-6">
+                                <i class="fas fa-comments text-yellow-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg mb-1">Communication</h4>
+                                <p class="text-gray-400">Capacité à expliquer des concepts techniques à des non-techniciens.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="work" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto glass-card rounded-2xl">
+        <div class="text-center mb-16 animate-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">Mon <span class="gradient-text">expérience</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+        </div>
+        
+        <div class="relative max-w-3xl mx-auto">
+            <div class="space-y-8">
+                <div class="timeline-item relative pl-10 animate-in">
+                    <div class="glass-card p-6 rounded-xl hover-scale">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Développeur Front-end Junior</h3>
+                            <span class="text-sm text-blue-400"> Avenir </span>
+                        </div>
+                        <h4 class="text-gray-400 mb-4">...., Cote d'Ivoire</h4>
+                        <p class="text-gray-300">Responsable de la conception et de l'implémentation d'interfaces utilisateur pour des applications SaaS complexes. Collaboration avec l'équipe UX pour créer des expériences utilisateur optimales.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item relative pl-10 animate-in" style="animation-delay: 0.1s;">
+                    <div class="glass-card p-6 rounded-xl hover-scale">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Développeur Full Stack</h3>
+                            <span class="text-sm text-purple-400">Avenir</span>
+                        </div>
+                        <h4 class="text-gray-400 mb-4">WebCraft, Toulouse</h4>
+                        <p class="text-gray-300">Développement d'applications web complètes, de la base de données à l'interface utilisateur. Participation à l'architecture technique et aux décisions de conception.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item relative pl-10 animate-in" style="animation-delay: 0.2s;">
+                    <div class="glass-card p-6 rounded-xl hover-scale">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Designer UI/UX</h3>
+                            <span class="text-sm text-pink-400">Avenir</span>
+                        </div>
+                        <h4 class="text-gray-400 mb-4">PixelPerfect, Atlanta</h4>
+                        <p class="text-gray-300">Conception d'interfaces utilisateur et d'expériences digitales pour des clients variés. Création de wireframes, prototypes et design systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">Mes <span class="gradient-text">projets</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="project-card glass-card rounded-xl overflow-hidden relative hover-scale animate-in">
+                <div class="h-64 overflow-hidden">
+                    <img src="IMG.jpg" 
+                         alt="Project 1" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-globe text-blue-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Plateforme E-commerce</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">Solution complète de vente en ligne avec système de paiement sécurisé, gestion des stocks et tableau de bord analytique.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-xs">React</span>
+                        <span class="px-3 py-1 bg-purple-900/50 text-purple-400 rounded-full text-xs">Node.js</span>
+                        <span class="px-3 py-1 bg-green-900/50 text-green-400 rounded-full text-xs">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card glass-card rounded-xl overflow-hidden relative hover-scale animate-in" style="animation-delay: 0.1s;">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1555774698-0f77e70ac5e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Project 2" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-mobile-alt text-purple-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Application Fitness</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">Application mobile de suivi d'activité physique avec statistiques personnalisées, programmes d'entraînement et suivi nutritionnel.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-xs">React Native</span>
+                        <span class="px-3 py-1 bg-red-900/50 text-red-400 rounded-full text-xs">Firebase</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card glass-card rounded-xl overflow-hidden relative hover-scale animate-in" style="animation-delay: 0.2s;">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                         alt="Project 3" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-green-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Dashboard Analytics</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">Tableau de bord interactif pour la visualisation de données complexes avec options d'export PDF/Excel et personnalisation avancée.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-xs">Vue.js</span>
+                        <span class="px-3 py-1 bg-green-900/50 text-green-400 rounded-full text-xs">D3.js</span>
+                        <span class="px-3 py-1 bg-yellow-900/50 text-yellow-400 rounded-full text-xs">Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12 animate-in" style="animation-delay: 0.3s;">
+            <a href="#" class="inline-flex items-center px-8 py-3 border border-blue-600 text-blue-400 hover:bg-blue-900/30 rounded-lg font-medium hover-scale">
+                <span>Voir plus de projets</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <!----------------------------------- Certifications Section ------------------------------------------------------->
+<section id="certifications" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center mb-16 animate-in">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">Mes <span class="gradient-text">certifications</span></h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+        <p class="text-gray-400 max-w-2xl mx-auto mt-6">Voici les certifications que j'ai obtenues dans différentes spécialisations.</p>
+    </div>
+
+    <div class="glass-card p-6 rounded-2xl hover-scale">
+        <!-- Certifications Carousel -->
+        <div class="certifications-carousel relative">
+            <!-- Carousel Container -->
+            <div class="overflow-hidden">
+                <div class="flex transition-transform duration-500 ease-in-out" id="certifications-track">
+                    <!-- Certificat 1 -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                        <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                            <div class="h-64 overflow-hidden relative group">
+                                <!-- Remplacez src par le chemin de votre image -->
+                                <img src="crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg" 
+                                     alt="Certificat Développement Web" 
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <a href="crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg" 
+                                       target="_blank" 
+                                       class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                        <i class="fas fa-expand mr-2"></i> Agrandir
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Les bases du matériel informatique</h3>
+                                <p class="text-gray-400 text-sm mb-4">Sisco - 2025</p>
+                                <a href="lien-vers-certificat-numérique" 
+                                   class="text-blue-400 hover:text-blue-300 text-sm font-medium inline-flex items-center"
+                                   target="_blank">
+                                    Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificat 2 -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                        <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                            <div class="h-64 overflow-hidden relative group">
+                                <img src="crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg" 
+                                     alt="Certificat UI/UX Design" 
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <a href="crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg" 
+                                       target="_blank" 
+                                       class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                        <i class="fas fa-expand mr-2"></i> Agrandir
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Introduction à la cybersécurité </h3>
+                                <p class="text-gray-400 text-sm mb-4">Sisco - 2025</p>
+                                <a href="lien-vers-certificat-numérique" 
+                                   class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
+                                   target="_blank">
+                                    Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+   <!-- Certificat 2 -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                        <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                            <div class="h-64 overflow-hidden relative group">
+                                <img src="chemin/vers/certificat2.jpg" 
+                                     alt="Certificat UI/UX Design" 
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <a href="chemin/vers/certificat2.jpg" 
+                                       target="_blank" 
+                                       class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                        <i class="fas fa-expand mr-2"></i> Agrandir
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">UI/UX Design Avancé</h3>
+                                <p class="text-gray-400 text-sm mb-4">Udemy - 2023</p>
+                                <a href="lien-vers-certificat-numérique" 
+                                   class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
+                                   target="_blank">
+                                    Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                       <!-- Certificat 2 -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                        <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                            <div class="h-64 overflow-hidden relative group">
+                                <img src="chemin/vers/certificat2.jpg" 
+                                     alt="Certificat UI/UX Design" 
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <a href="chemin/vers/certificat2.jpg" 
+                                       target="_blank" 
+                                       class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                        <i class="fas fa-expand mr-2"></i> Agrandir
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">UI/UX Design Avancé</h3>
+                                <p class="text-gray-400 text-sm mb-4">Udemy - 2023</p>
+                                <a href="lien-vers-certificat-numérique" 
+                                   class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
+                                   target="_blank">
+                                    Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                       <!-- Certificat 2 -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                        <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                            <div class="h-64 overflow-hidden relative group">
+                                <img src="chemin/vers/certificat2.jpg" 
+                                     alt="Certificat UI/UX Design" 
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <a href="chemin/vers/certificat2.jpg" 
+                                       target="_blank" 
+                                       class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                        <i class="fas fa-expand mr-2"></i> Agrandir
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">UI/UX Design Avancé</h3>
+                                <p class="text-gray-400 text-sm mb-4">Udemy - 2023</p>
+                                <a href="lien-vers-certificat-numérique" 
+                                   class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
+                                   target="_blank">
+                                    Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certificat 3 -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                        <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                            <div class="h-64 overflow-hidden relative group">
+                                <img src="chemin/vers/certificat3.jpg" 
+                                     alt="Certificat JavaScript" 
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <a href="chemin/vers/certificat3.jpg" 
+                                       target="_blank" 
+                                       class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                        <i class="fas fa-expand mr-2"></i> Agrandir
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">JavaScript Moderne</h3>
+                                <p class="text-gray-400 text-sm mb-4">FreeCodeCamp - 2022</p>
+                                <a href="lien-vers-certificat-numérique" 
+                                   class="text-green-400 hover:text-green-300 text-sm font-medium inline-flex items-center"
+                                   target="_blank">
+                                    Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ajoutez d'autres certificats ici en suivant le même modèle -->
+                </div>
+            </div>
+            
+            <!-- Navigation arrows -->
+            <button class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-slate-800/80 hover:bg-slate-700/80 w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg" id="certifications-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-slate-800/80 hover:bg-slate-700/80 w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg" id="certifications-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Carousel indicators -->
+        <div class="flex justify-center mt-8 space-x-2" id="certifications-indicators">
+            <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
+            <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
+            <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
+        </div>
+    </div>
+</section>
+<script>
+    // Certifications Carousel
+const certTrack = document.getElementById('certifications-track');
+const certItems = document.querySelectorAll('.certifications-carousel .flex-shrink-0');
+const certPrev = document.getElementById('certifications-prev');
+const certNext = document.getElementById('certifications-next');
+const certIndicators = document.getElementById('certifications-indicators').children;
+
+let currentCertIndex = 0;
+const certItemWidth = certItems[0].offsetWidth;
+const certVisibleItems = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+
+function updateCertCarousel() {
+    const offset = -currentCertIndex * certItemWidth;
+    certTrack.style.transform = `translateX(${offset}px)`;
+    
+    // Update indicators
+    for (let i = 0; i < certIndicators.length; i++) {
+        if (i === currentCertIndex) {
+            certIndicators[i].classList.add('bg-blue-500');
+            certIndicators[i].classList.remove('bg-blue-500/50');
+        } else {
+            certIndicators[i].classList.add('bg-blue-500/50');
+            certIndicators[i].classList.remove('bg-blue-500');
+        }
+    }
+}
+
+certPrev.addEventListener('click', () => {
+    currentCertIndex = Math.max(currentCertIndex - 1, 0);
+    updateCertCarousel();
+});
+
+certNext.addEventListener('click', () => {
+    currentCertIndex = Math.min(currentCertIndex + 1, certItems.length - certVisibleItems);
+    updateCertCarousel();
+});
+
+// Click on indicators
+for (let i = 0; i < certIndicators.length; i++) {
+    certIndicators[i].addEventListener('click', () => {
+        currentCertIndex = i;
+        updateCertCarousel();
+    });
+}
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    const newVisibleItems = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+    if (newVisibleItems !== certVisibleItems) {
+        currentCertIndex = 0;
+        updateCertCarousel();
+    }
+});
+</script>
+
+    
+
+    <!------------------------------ ----------Contact Section -------------------------------------------------->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">Me <span class="gradient-text">contacter</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+        </div>
+        
+        <div class="glass-card p-8 rounded-2xl hover-scale">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2 animate-in">
+                    <h3 class="text-2xl font-semibold mb-6 title-font">Parlons de votre projet</h3>
+                    <p class="text-gray-400 mb-8">Je suis toujours ouvert à discuter de nouveaux projets, opportunités de collaboration ou simplement pour faire connaissance. N'hésitez pas à me contacter.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <a href="mailto:contact@example.com" class="text-gray-400 hover:text-blue-400 transition-colors">behdehryjeremieharding@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Téléphone</h4>
+                                <a href="tel:+1234567890" class="text-gray-400 hover:text-blue-400 transition-colors">+225 0142003284</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Localisation</h4>
+                                <p class="text-gray-400">Abidjan, Côte d'Ivoire</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-medium mb-4">Réseaux sociaux</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/jeremie-harding/" target="_blank" class="w-12 h-12 rounded-full bg-slate-700 hover:bg-blue-600 flex items-center justify-center transition-colors hover-scale">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-slate-700 hover:bg-blue-400 flex items-center justify-center transition-colors hover-scale">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://github.com/Harding10" target="_blank" class="w-12 h-12 rounded-full bg-slate-700 hover:bg-purple-600 flex items-center justify-center transition-colors hover-scale">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-slate-700 hover:bg-pink-600 flex items-center justify-center transition-colors hover-scale">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 animate-in" style="animation-delay: 0.2s;">
+                   <form action="https://formspree.io/f/xblkjnlo" method="POST" class="space-y-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Nom complet</label>
+      <input type="text" name="name" id="name" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+      <input type="email" name="email" id="email" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
+    </div>
+  </div>
+  <div>
+    <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Sujet</label>
+    <input type="text" name="subject" id="subject" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
+  </div>
+  <div>
+    <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+    <textarea name="message" id="message" rows="5" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent"></textarea>
+  </div>
+  <button type="submit" class="w-full px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-medium hover-scale shadow-lg">
+    Envoyer le message
+  </button>
+</form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 glass-card">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-2xl font-bold gradient-text">Portfolio</span>
+                    <p class="text-gray-400 mt-2"><a href="https://www.linkedin.com/in/jeremie-harding/" target="_blank">&copy; Degry Jeremie Harding Beh.</a>Tous droits réservés</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/jeremie-harding/" class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://github.com/Harding10" class="text-gray-400 hover:text-purple-400 transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animate elements when they come into view
+        const animateElements = document.querySelectorAll('.animate-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Animate skill circles
+        const skillCircles = document.querySelectorAll('.progress');
+        
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const percent = entry.target.getAttribute('data-percent');
+                    const circumference = 314; // 2 * π * r (where r=50)
+                    const offset = circumference - (percent / 100) * circumference;
+                    entry.target.style.strokeDashoffset = offset;
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+        
+        skillCircles.forEach(circle => {
+            skillObserver.observe(circle);
+        });
+        
+        // Floating animation for elements
+        const floatingElements = document.querySelectorAll('.floating');
+        
+        floatingElements.forEach((element, index) => {
+            element.style.animationDelay = `${index * 0.2}s`;
+        });
+    </script>
+</body>
+</html> 
