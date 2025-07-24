@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Mes Projets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+        .tech-badge {
+            transition: all 0.2s ease;
+        }
+        .project-card:hover .tech-badge {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .gradient-text {
+            background-image: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+        }
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+        }
+        .project-image {
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Mes <span class="gradient-text">projets</span></h2>
+            <div class="w-24 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"></div>
+            <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">Découvrez mes réalisations classées par catégorie</p>
+        </div>
+
+        <!-- Filtres -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md active" data-filter="all">
+                <i class="fas fa-th mr-2"></i>Tous
+            </button>
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md" data-filter="web">
+                <i class="fas fa-globe mr-2"></i>Sites Web
+            </button>
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md" data-filter="app">
+                <i class="fas fa-mobile-alt mr-2"></i>Applications
+            </button>
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md" data-filter="design">
+                <i class="fas fa-paint-brush mr-2"></i>Design
+            </button>
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md" data-filter="software">
+                <i class="fas fa-laptop-code mr-2"></i>Logiciels
+            </button>
+        </div>
+
+        <!-- Grille de projets -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+            <!-- Les projets seront injectés ici par JavaScript -->
+        </div>
+
+
+    </section>
+
+    <script>
+        // Données des projets
+        const projects = [
+            {
+                id: 1,
+                title: "Kivip E-commerce",
+                description: "Plateforme complète de vente en ligne avec système de paiement sécurisé et gestion des stocks.",
+                image: "Kivip - Accueil - .png",
+                technologies: ["Firebase", "JavaScript", "Tailwind CSS"],
+                category: "web",
+                link: "https://kivip.vercel.app/",
+                icon: "globe",
+                status: "En ligne"
+            },
+            {
+                id: 2,
+                title: "Application Fitness",
+                description: "Application mobile de suivi d'activité physique avec programmes personnalisés et suivi nutritionnel.",
+                image: "IMG.jpg",
+                technologies: ["React Native", "Firebase", "Redux"],
+                category: "app",
+                link: "#",
+                icon: "mobile-alt",
+                status: "Disponible"
+            },
+            {
+                id: 3,
+                title: "Dashboard Analytics",
+                description: "Tableau de bord interactif pour la visualisation et l'analyse de données complexes.",
+                image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+                technologies: ["Vue.js", "D3.js", "Python"],
+                category: "software",
+                link: "#",
+                icon: "chart-line",
+                status: "Version 2.0"
+            },
+            {
+                id: 4,
+                title: "Système de Design",
+                description: "Bibliothèque de composants UI pour maintenir une cohérence visuelle sur toutes les plateformes.",
+                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                technologies: ["Figma", "Storybook", "Tailwind"],
+                category: "design",
+                link: "#",
+                icon: "paint-brush",
+                status: "UI Kit"
+            },
+            {
+                id: 5,
+                title: "API RESTful",
+                description: "API performante pour applications mobiles et web avec authentification JWT et documentation Swagger.",
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                technologies: ["Node.js", "Express", "MongoDB"],
+                category: "software",
+                link: "#",
+                icon: "server",
+                status: "API v1.2"
+            },
+            {
+                id: 6,
+                title: "Jeu Éducatif",
+                description: "Jeu interactif pour enfants avec apprentissage des mathématiques et suivi des progrès.",
+                image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                technologies: ["Unity", "C#", "Firebase"],
+                category: "app",
+                link: "#",
+                icon: "gamepad",
+                status: "iOS/Android"
+            }
+        ];
+
+        // Fonction pour afficher les projets
+        function displayProjects(filter = 'all') {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = '';
+
+            const filteredProjects = filter === 'all' 
+                ? projects 
+                : projects.filter(project => project.category === filter);
+
+            if (filteredProjects.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i class="fas fa-folder-open text-4xl text-gray-400 mb-4"></i>
+                        <p class="text-xl text-gray-600">Aucun projet trouvé dans cette catégorie</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredProjects.forEach((project, index) => {
+                const projectEl = document.createElement('div');
+                projectEl.className = `project-card glass-card rounded-xl overflow-hidden relative animate-fade-in`;
+                projectEl.style.animationDelay = `${index * 0.1}s`;
+                
+                // Détermine la couleur en fonction de la catégorie
+                let colorClass;
+                switch(project.category) {
+                    case 'web': colorClass = 'blue'; break;
+                    case 'app': colorClass = 'purple'; break;
+                    case 'design': colorClass = 'pink'; break;
+                    case 'software': colorClass = 'green'; break;
+                    default: colorClass = 'blue';
+                }
+
+                projectEl.innerHTML = `
+                    <div class="h-64 overflow-hidden relative group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-${colorClass}-950/80 to-transparent z-10"></div>
+                        <img src="${project.image}" alt="${project.title}" 
+                            class="w-full h-full object-cover project-image">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="inline-block px-3 py-1 bg-${colorClass}-600/90 text-white text-sm rounded-full shadow-md">
+                                ${project.status}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-${colorClass}-500/10 flex items-center justify-center mr-4 hover:scale-110 transition-transform">
+                                <i class="fas fa-${project.icon} text-${colorClass}-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">${project.title}</h3>
+                                <p class="text-sm text-${colorClass}-400 capitalize">${project.category === 'app' ? 'Application' : project.category === 'web' ? 'Site Web' : project.category === 'software' ? 'Logiciel' : 'Design'}</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 mb-4">${project.description}</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.technologies.map(tech => `
+                                <span class="tech-badge px-3 py-1 bg-${colorClass}-900/50 text-${colorClass}-400 rounded-full text-xs">
+                                    ${tech}
+                                </span>
+                            `).join('')}
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-700/50 flex justify-between items-center">
+                            <a href="${project.link}" target="_blank" class="text-${colorClass}-400 hover:text-${colorClass}-300 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i> Voir le projet
+                            </a>
+                            <button class="text-gray-400 hover:text-white transition-colors project-detail-btn" data-project-id="${project.id}">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(projectEl);
+            });
+        }
+
+        // Gestion des filtres
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Met à jour l'état actif des boutons
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-gradient-to-r', 'from-blue-600', 'to-purple-600', 'text-white');
+                    b.classList.add('bg-white', 'border', 'border-gray-200');
+                });
+                
+                this.classList.add('active');
+                this.classList.remove('bg-white', 'border', 'border-gray-200');
+                
+                // Filtre les projets
+                const filter = this.dataset.filter;
+                displayProjects(filter);
+            });
+        });
+
+        // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            displayProjects();
+            
+            // Observe les projets pour les animations
+            document.querySelectorAll('.project-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+        // Gestion des clics sur les détails des projets (à compléter selon vos besoins)
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.project-detail-btn')) {
+                const projectId = e.target.closest('.project-detail-btn').dataset.projectId;
+                // Ici vous pourriez ouvrir une modal avec plus de détails
+                console.log('Voir plus de détails pour le projet', projectId);
+                alert(`Détails du projet ${projectId} - Cette fonctionnalité peut être étendue avec une modal`);
+            }
+        });
+    </script>
+</body>
+</html>
