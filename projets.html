@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,20 +37,25 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         }
+
         .project-card {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
+
         .project-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
         }
+
         .tech-badge {
             transition: all 0.2s ease;
         }
+
         .project-card:hover .tech-badge {
             transform: translateY(-2px);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .gradient-text {
             background-image: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
             -webkit-background-clip: text;
@@ -57,47 +63,65 @@
             color: transparent;
             background-size: 200% auto;
         }
+
         .filter-btn {
             transition: all 0.3s ease;
         }
+
         .filter-btn.active {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             color: white;
             box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
         }
+
         .project-image {
             transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .project-card:hover .project-image {
             transform: scale(1.05);
         }
     </style>
 </head>
+<header class="flex items-center justify-between p-4 bg-white shadow">
+    <h1 class="text-xl font-bold"><i class="fas fa-leaf logo-icon"></i><span
+            class="text-blue-900 gap-2">Portfolio</span></h1>
+    <i class="fa-solid fa-turn-left" style="color: #070984;"><a href="index.html">retour</a></i>
+</header>
+
 <body class="bg-gray-50 font-sans antialiased">
 
     <!-- Projects Section -->
     <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16 animate-fade-in">
             <h2 class="text-3xl md:text-5xl font-bold mb-4">Mes <span class="gradient-text">projets</span></h2>
-            <div class="w-24 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"></div>
-            <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">Découvrez mes réalisations classées par catégorie</p>
+            <div class="w-24 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full">
+            </div>
+            <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">Découvrez mes réalisations classées par catégorie
+            </p>
         </div>
 
         <!-- Filtres -->
         <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md active" data-filter="all">
+            <button
+                class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md active"
+                data-filter="all">
                 <i class="fas fa-th mr-2"></i>Tous
             </button>
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md" data-filter="web">
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+                data-filter="web">
                 <i class="fas fa-globe mr-2"></i>Sites Web
             </button>
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md" data-filter="app">
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+                data-filter="app">
                 <i class="fas fa-mobile-alt mr-2"></i>Applications
             </button>
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md" data-filter="design">
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+                data-filter="design">
                 <i class="fas fa-paint-brush mr-2"></i>Design
             </button>
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md" data-filter="software">
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+                data-filter="software">
                 <i class="fas fa-laptop-code mr-2"></i>Logiciels
             </button>
         </div>
@@ -117,7 +141,7 @@
                 id: 1,
                 title: "Kivip E-commerce",
                 description: "Plateforme complète de vente en ligne avec système de paiement sécurisé et gestion des stocks.",
-                image: "Kivip - Accueil - .png",
+                image: "photo/Kivip.png",
                 technologies: ["Firebase", "JavaScript", "Tailwind CSS"],
                 category: "web",
                 link: "https://kivip.vercel.app/",
@@ -127,14 +151,15 @@
             {
                 id: 2,
                 title: "Application Fitness",
-                description: "Application mobile de suivi d'activité physique avec programmes personnalisés et suivi nutritionnel.",
-                image: "IMG.jpg",
-                technologies: ["React Native", "Firebase", "Redux"],
-                category: "app",
-                link: "#",
-                icon: "mobile-alt",
+                description: "Bienvenue sur RapIdfy !\nNotre application en ligne est conçue pour vous aider à taper plus rapidement au clavier.\nGrâce à des exercices simples et adaptés à votre niveau,\nvous pourrez améliorer votre vitesse et votre précision en un rien de temps.\nCommencez dès maintenant et devenez un pro du clavier avec RapIdfy !",
+                image: "photo/rapidfy.png",
+                technologies: ["HTML", "CSS", "JavaScript"],
+                category: "web",
+                link: "https://harding10.github.io/rapidfy.github.com/",
+                icon: "globe",
                 status: "Disponible"
             },
+
             {
                 id: 3,
                 title: "Dashboard Analytics",
@@ -186,8 +211,8 @@
             const grid = document.getElementById('projects-grid');
             grid.innerHTML = '';
 
-            const filteredProjects = filter === 'all' 
-                ? projects 
+            const filteredProjects = filter === 'all'
+                ? projects
                 : projects.filter(project => project.category === filter);
 
             if (filteredProjects.length === 0) {
@@ -204,10 +229,10 @@
                 const projectEl = document.createElement('div');
                 projectEl.className = `project-card glass-card rounded-xl overflow-hidden relative animate-fade-in`;
                 projectEl.style.animationDelay = `${index * 0.1}s`;
-                
+
                 // Détermine la couleur en fonction de la catégorie
                 let colorClass;
-                switch(project.category) {
+                switch (project.category) {
                     case 'web': colorClass = 'blue'; break;
                     case 'app': colorClass = 'purple'; break;
                     case 'design': colorClass = 'pink'; break;
@@ -260,16 +285,16 @@
 
         // Gestion des filtres
         document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 // Met à jour l'état actif des boutons
                 document.querySelectorAll('.filter-btn').forEach(b => {
                     b.classList.remove('active', 'bg-gradient-to-r', 'from-blue-600', 'to-purple-600', 'text-white');
                     b.classList.add('bg-white', 'border', 'border-gray-200');
                 });
-                
+
                 this.classList.add('active');
                 this.classList.remove('bg-white', 'border', 'border-gray-200');
-                
+
                 // Filtre les projets
                 const filter = this.dataset.filter;
                 displayProjects(filter);
@@ -289,7 +314,7 @@
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
             displayProjects();
-            
+
             // Observe les projets pour les animations
             document.querySelectorAll('.project-card').forEach(card => {
                 observer.observe(card);
@@ -297,7 +322,7 @@
         });
 
         // Gestion des clics sur les détails des projets (à compléter selon vos besoins)
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (e.target.closest('.project-detail-btn')) {
                 const projectId = e.target.closest('.project-detail-btn').dataset.projectId;
                 // Ici vous pourriez ouvrir une modal avec plus de détails
@@ -307,4 +332,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -141,30 +141,11 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
             gap: 2.5rem;
         }
 
-        .nav-links a {
-            color: var(--texte);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-            font-size: 1.05rem;
-        }
 
         .nav-links a:hover {
-            color: var(--vert-principal);
-        }
+            color: blueviolet;
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background: var(--vert-principal);
-            bottom: 0;
-            left: 0;
-            transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            border-radius: 3px;
+
         }
 
         .nav-links a:hover::after {
@@ -277,6 +258,7 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
             color: var(--vert-fonce);
             font-size: 1.4rem;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .social-links a:hover {
@@ -516,11 +498,11 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
         <nav id="navbar">
             <div class="logo"><i class="fas fa-leaf logo-icon"></i>Port<span>folio</span></div>
             <div class="nav-links">
-                <a href="#accueil" class="active">Accueil</a>
-                <a href="#projets">Projets</a>
-                <a href="#services">Services</a>
-                <a href="#a-propos">À propos</a>
-                <a href="#contact">Contact</a>
+                <a href="#accueil" class="active">{ Accueil }</a>
+                <a href="#projets">{ Projets }</a>
+                <a href="#services">{ Services }</a>
+                <a href="#a-propos">{ À propos }</a>
+                <a href="#contact">{ Contact }</a>
             </div>
             <button class="nav-button">Télécharger CV <i class="fas fa-download"></i></button>
         </nav>
@@ -529,29 +511,29 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
             <div class="text-content">
                 <span class="subtitle">Bonjour, je suis</span>
                 <h1><span>JEREMIE HARDING</span></h1>
-                <p>développeuse  Full Stack spécialisée dans la création d'interfaces modernes et
+                <p>développeuse Full Stack spécialisée dans la création d'interfaces modernes et
                     intuitives. Je combine esthétique et fonctionnalité pour des produits digitaux mémorables.</p>
 
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jeremie-harding/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/harding10"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-dribbble"></i></a>
                     <a href="#"><i class="fab fa-behance"></i></a>
                 </div>
 
                 <div class="cta-buttons">
                     <a href="#contact" class="primary-btn">Me contacter <i class="fas fa-arrow-right"></i></a>
-                    <a href="#projets" class="secondary-btn">Voir mes projets <i class="fas fa-eye"></i></a>
+                    <a href="projets.html" class="secondary-btn">Voir mes projets <i class="fas fa-eye"></i></a>
                 </div>
             </div>
 
             <div class="image-content">
                 <div class="image-container">
                     <!-- Remplacez par le chemin de votre photo -->
-                    <img src="ChatGPT Image 23 juil. 2025, 18_37_34.png" alt="Photo de profil" class="profile-image">
+                    <img src="photo/me.png" alt="Photo de profil" class="profile-image">
                     <div class="image-overlay">
                         <h3>JEREMIE HARDING</h3>
-                        <p>développeuse  Full Stack</p>
+                        <p>développeuse Full Stack</p>
                     </div>
                 </div>
             </div>
@@ -566,15 +548,15 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
         <!-- About Section -->
         <section id="about" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 animate-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">À <span class="gradient-text">propos</span>
-                    de moi</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ À <span class="gradient-text">propos</span>
+                    de moi }</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
             </div>
 
             <div class="flex flex-col md:flex-row items-center glass-card p-8 rounded-2xl hover-scale">
                 <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center animate-in">
                     <div class="relative w-64 h-64 rounded-2xl overflow-hidden border-2 border-blue-500/20">
-                        <img src="IMG.jpg" alt="About" class="w-full h-full object-cover">
+                        <img src="photo/IMG.jpg" alt="About" class="w-full h-full object-cover">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent">
                         </div>
@@ -582,7 +564,11 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                 </div>
                 <div class="md:w-2/3 md:pl-12 animate-in" style="animation-delay: 0.2s;">
                     <h3 class="text-2xl font-semibold mb-6 title-font">Qui suis-je ?</h3>
-                    <p class="text-blue-900 mb-6"> Je suis étudiant en Licence 2 de Génie Informatique à l’Institut Universitaire d’Abidjan (IUA), passionné par la création d’interfaces utilisateur élégantes et d’applications web performantes. Mon approche allie sensibilité artistique et rigueur technique. J’aime travailler avec des technologies telles que Laravel et React.js, que j’utilise pour concevoir des solutions modernes et efficaces.</p>
+                    <p class="text-blue-900 mb-6"> Je suis étudiant en Licence 2 de Génie Informatique à l’Institut
+                        Universitaire d’Abidjan (IUA), passionné par la création d’interfaces utilisateur élégantes et
+                        d’applications web performantes. Mon approche allie sensibilité artistique et rigueur technique.
+                        J’aime travailler avec des technologies telles que Laravel et React.js, que j’utilise pour
+                        concevoir des solutions modernes et efficaces.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <div class="bg-slate-400/50 p-6 rounded-xl hover-scale">
@@ -617,7 +603,7 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
         <!-- Section Pyramide des Compétences -->
         <section class="py-16 px-4 bg-gray-50">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Mes Compétences</h2>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">{ Mes Compétences }</h2>
                 <div class="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
                 <!-- Pyramide Container -->
                 <div class="pyramid-container">
@@ -645,8 +631,8 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                         </div>
                         <div
                             class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="Sass" title="Sass">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png"
+                                class="w-14 h-14 md:w-16 md:h-16" alt="Laravel" title="Laravel">
                         </div>
                     </div>
 
@@ -659,14 +645,16 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                         </div>
                         <div
                             class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
+                            <img src="data:image/png;base64,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"
                                 class="w-14 h-14 md:w-16 md:h-16" alt="Tailwind" title="Tailwind CSS">
                         </div>
+
                         <div
                             class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="TypeScript" title="TypeScript">
+                            <img src="data:image/png;base64,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"
+                                class="w-14 h-14 md:w-16 md:h-16" alt="Firebase" title="firebase">
                         </div>
+
                         <div
                             class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
@@ -678,8 +666,8 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                     <div class="flex justify-center mb-[-1.5rem]">
                         <div
                             class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full" alt="Next.js" title="Next.js">
+                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_lThaNg9hzYNfzT3IC7hGdBy8qijl4BM1cXWHr-p3X7M2Q=s900-c-k-c0x00ffffff-no-rj"
+                                class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full" alt="Mysql" title="Mysql">
                         </div>
                         <div
                             class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
@@ -702,8 +690,8 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                         </div>
                         <div
                             class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="AWS" title="AWS">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                                class="w-14 h-14 md:w-16 md:h-16" alt="TypeScript" title="TypeScript">
                         </div>
                     </div>
 
@@ -726,10 +714,11 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">
                     <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500">Parcours</span>
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500 flex justify-center align-center">{
+                        Parcours }</span>
                     <span class="text-gray-800 dark:text-white"> Professionnel</span>
                 </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                <p class="text-lg text-gray-600 dark:text-gray-950 max-w-2xl mx-auto">
                     Mes expériences passées et futures à travers le monde
                 </p>
             </div>
@@ -742,7 +731,8 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                         <div
                             class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
                             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Évolution</h3>
-                            <p class="text-gray-600 dark:text-gray-300">Mon parcours en tant que développeuse Full Stack</p>
+                            <p class="text-gray-600 dark:text-gray-300">Mon parcours en tant que développeuse Full Stack
+                            </p>
                             <div class="mt-6 space-y-4">
                                 <div class="flex items-center">
                                     <div class="w-3 h-3 rounded-full bg-indigo-500 mr-3"></div>
@@ -801,8 +791,9 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                                     <span
                                         class="inline-block px-3 py-1 text-xs font-semibold text-indigo-800 bg-indigo-100 dark:text-indigo-200 dark:bg-indigo-900/30 rounded-full mb-2">2025
                                         - Présent</span>
-                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Développeur et chef de projet
-                                        </h3>
+                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Développeur et chef de
+                                        projet
+                                    </h3>
                                     <h4 class="text-lg text-indigo-600 dark:text-indigo-400 mb-3">...., Côte d'Ivoire
                                     </h4>
                                 </div>
@@ -818,7 +809,10 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                                 </div>
                             </div>
                             <p class="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
-                             Responsable de la conception et de l’implémentation des interfaces utilisateur, ainsi que de la coordination du backend dans le cadre du développement d’un site en version MVP. En charge de la répartition des tâches au sein de l’équipe et de la collaboration avec les développeurs pour offrir des expériences utilisateur optimales.
+                                Responsable de la conception et de l’implémentation des interfaces utilisateur, ainsi
+                                que de la coordination du backend dans le cadre du développement d’un site en version
+                                MVP. En charge de la répartition des tâches au sein de l’équipe et de la collaboration
+                                avec les développeurs pour offrir des expériences utilisateur optimales.
                             </p>
                         </div>
                     </div>
@@ -897,16 +891,17 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
         <!-- Projects Section -->
         <section id="projects" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 animate-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">Mes <span
-                        class="gradient-text">projets</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Mes <span class="gradient-text">projets
+                        }</span></h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8">
                 <!-- Project 1 -->
-                <div class="project-card bg-blue-950  glass-card  rounded-xl overflow-hidden relative hover-scale animate-in">
+                <div
+                    class="project-card bg-blue-950  glass-card  rounded-xl overflow-hidden relative hover-scale animate-in">
                     <div class="h-64 overflow-hidden">
-                        <img src="Kivip - Accueil - .png" alt="Project 1"
+                        <img src="photo/Kivip.png" alt="Project 1"
                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                     </div>
                     <div class="p-6">
@@ -921,7 +916,8 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                         <div class="flex flex-wrap gap-2">
                             <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-xs">Firebase</span>
                             <span class="px-3 py-1 bg-purple-900/50 text-purple-400 rounded-full text-xs">Js</span>
-                            <span class="px-3 py-1 bg-green-900/50 text-green-400 rounded-full text-xs">Tailwind CSS</span>
+                            <span class="px-3 py-1 bg-green-900/50 text-green-400 rounded-full text-xs">Tailwind
+                                CSS</span>
                         </div>
                     </div>
                 </div>
@@ -930,23 +926,26 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                 <div class="project-card bg-blue-950 glass-card rounded-xl overflow-hidden relative hover-scale animate-in"
                     style="animation-delay: 0.1s;">
                     <div class="h-64 overflow-hidden">
-                        <img src="IMG.jpg"
-                            alt="Project 2"
+                        <img src="photo/RapIdfy.png" alt="Project 2"
                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-4">
                             <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
-                                <i class="fas fa-mobile-alt text-purple-400"></i>
+                                <a href="https://harding10.github.io/rapidfy.github.com/"><i
+                                        class="fas fa-globe text-blue-400"></i></a>
                             </div>
-                            <h3 class="text-xl text-white font-semibold">Application Fitness</h3>
+                            <h3 class="text-xl text-white font-semibold">Site RapIdfy</h3>
                         </div>
-                        <p class="text-gray-400 mb-4">Application mobile de suivi d'activité physique avec statistiques
-                            personnalisées, programmes d'entraînement et suivi nutritionnel.</p>
+                        <p class="text-gray-400 mb-4">Bienvenue sur RapIdfy!
+                            Notre application en ligne est conçue pour vous aider à taper plus rapidement au clavier.
+                            Grâce à des exercices simples et adaptés à votre niveau,
+                            vous pourrez améliorer votre vitesse et votre précision en un rien de temps.
+                            Commencez dès maintenant et devenez un pro du clavier avec RapIdfy !</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-xs">React
-                                Native</span>
-                            <span class="px-3 py-1 bg-red-900/50 text-red-400 rounded-full text-xs">Firebase</span>
+                            <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-xs">html-css
+                            </span>
+                            <span class="px-3 py-1 bg-red-900/50 text-red-400 rounded-full text-xs">javascript</span>
                         </div>
                     </div>
                 </div>
@@ -978,7 +977,7 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
             </div>
 
             <div class="text-center mt-12 animate-in" style="animation-delay: 0.3s;">
-                <a href="#"
+                <a href="projets.html"
                     class="inline-flex items-center px-8 py-3 border border-blue-600 text-blue-400 hover:bg-blue-900/30 rounded-lg font-medium hover-scale">
                     <span>Voir plus de projets</span>
                     <i class="fas fa-arrow-right ml-2"></i>
@@ -999,8 +998,8 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
         <!----------------------------------- Certifications Section ------------------------------------------------------->
         <section id="certifications" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 animate-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">Mes <span
-                        class="gradient-text">certifications</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Mes <span
+                        class="gradient-text">certifications }</span></h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
                 <p class="text-gray-400 max-w-2xl mx-auto mt-6">Voici les certifications que j'ai obtenues dans
                     différentes spécialisations.</p>
@@ -1207,8 +1206,8 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
         <!------------------------------ ----------Contact Section -------------------------------------------------->
         <section id="contact" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16 animate-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">Me <span
-                        class="gradient-text">contacter</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Me <span class="gradient-text">contacter
+                        }</span></h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
             </div>
 
@@ -1284,26 +1283,26 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
                         <form action="https://formspree.io/f/xblkjnlo" method="POST" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label for="name" class="block text-sm font-medium text-gray-300 text-color-blue-950 mb-2">Nom
+                                    <label for="name" class="block text-sm font-medium  text-blue-950 mb-2">Nom
                                         complet</label>
                                     <input type="text" name="name" id="name" required
                                         class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
                                 </div>
                                 <div>
                                     <label for="email"
-                                        class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                        class="block text-sm font-medium text-blue-950 mb-2">Email</label>
                                     <input type="email" name="email" id="email" required
                                         class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
                                 </div>
                             </div>
                             <div>
-                                <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Sujet</label>
+                                <label for="subject" class="block text-sm font-medium text-blue-950 mb-2">Sujet</label>
                                 <input type="text" name="subject" id="subject" required
                                     class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
                             </div>
                             <div>
                                 <label for="message"
-                                    class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                                    class="block text-sm font-medium text-blue-950 mb-2">Message</label>
                                 <textarea name="message" id="message" rows="5" required
                                     class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent"></textarea>
                             </div>
@@ -1324,7 +1323,7 @@ PS C:\resource-personnel🗃🗃️🗃️\PORTFOLIO\jeremie.harding> VVS</title
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="mb-6 md:mb-0">
-                        <span class="text-2xl font-bold gradient-text">Portfolio</span>
+                        <span class="text-2xl font-bold gradient-text text-white">Portfolio</span>
                         <p class="text-gray-400 mt-2"><a href="https://www.linkedin.com/in/jeremie-harding/"
                                 target="_blank">&copy; Degry Jeremie Harding Beh.</a>Tous droits réservés</p>
                     </div>
