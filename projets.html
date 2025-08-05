@@ -109,6 +109,10 @@
                 <i class="fas fa-th mr-2"></i>Tous
             </button>
             <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+                data-filter="mini-projet">
+                <i class="fas fa-globe mr-2"></i>mini-projet
+            </button>
+            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
                 data-filter="web">
                 <i class="fas fa-globe mr-2"></i>Sites Web
             </button>
@@ -199,7 +203,7 @@
                 description: "Jeu interactif pour enfants avec apprentissage des mathématiques et suivi des progrès.",
                 image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
                 technologies: ["Unity", "C#", "Firebase"],
-                category: "app",
+                category: "mini-projet",
                 link: "#",
                 icon: "gamepad",
                 status: "iOS/Android"
@@ -233,6 +237,7 @@
                 // Détermine la couleur en fonction de la catégorie
                 let colorClass;
                 switch (project.category) {
+                    case 'mini-projet': colorClass = 'blue'; break;
                     case 'web': colorClass = 'blue'; break;
                     case 'app': colorClass = 'purple'; break;
                     case 'design': colorClass = 'pink'; break;
