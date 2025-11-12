@@ -410,27 +410,13 @@
         }
     </style>
 </head>
+<header class="flex items-center justify-between p-4 bg-white shadow">
+    <h1 class="text-xl font-bold"><i class="fas fa-leaf logo-icon"></i><span
+            class="text-blue-900 gap-2">Portfolio</span></h1>
+    <i class="fa-solid fa-turn-left" style="color: #070984;"><a href="index.html">retour</a></i>
+</header>
 
-<body class="antialiased">
-    <div class="loading-bar" id="loadingBar"></div>
-    
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </div>
-    
-    <header class="header flex items-center justify-between p-4 sticky top-0 z-40">
-        <h1 class="text-xl font-bold flex items-center">
-            <i class="fas fa-code text-accent mr-2"></i>
-            <span class="logo">Portfolio</span>
-            <span class="project-count" id="projectCount">6</span>
-        </h1>
-        <a href="index.html" class="back-button flex items-center gap-2">
-            <i class="fa-solid fa-arrow-left" style="color: #cbd5e1;"></i>
-            <span>Retour</span>
-        </a>
-    </header>
+<body class="bg-gray-50 font-sans antialiased">
 
     <!-- Projects Section -->
     <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -471,7 +457,7 @@
         </div>
 
         <!-- Grille de projets -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        <div class="grid grid-cols-1.5 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
             <!-- Les projets seront injectés ici par JavaScript -->
         </div>
     </section>
@@ -494,10 +480,9 @@
             },
             {
                 id: 2,
-                title: "RapIdfy - Application Fitness",
-                description: "Application en ligne conçue pour vous aider à taper plus rapidement au clavier grâce à des exercices adaptés.",
-                video: "photo/RapIdfy.mp4", // Remplacez par votre vidéo
-                videoType: "local", // Indique que c'est une vidéo locale
+                title: "Application Fitness",
+                description: "Bienvenue sur RapIdfy !\nNotre application en ligne est conçue pour vous aider à taper plus rapidement au clavier.\nGrâce à des exercices simples et adaptés à votre niveau,\nvous pourrez améliorer votre vitesse et votre précision en un rien de temps.\nCommencez dès maintenant et devenez un pro du clavier avec RapIdfy !",
+                image: "photo/rapidfy.png",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 category: "web",
                 link: "https://harding10.github.io/rapidfy.github.com/",
@@ -507,17 +492,17 @@
             },
             {
                 id: 3,
-                title: "Barrière Automatique",
-                description: "Système embarqué intelligent utilisant un capteur à ultrasons et servomoteur pour automatiser une barrière.",
-                video: "photo/barre-autio.mp4", // Remplacez par votre vidéo
-                videoType: "local", // Indique que c'est une vidéo locale
-                technologies: ["C++", "Arduino"],
+                title: "Dashboard Analytics",
+                description: "Tableau de bord interactif pour la visualisation et l'analyse de données complexes.",
+                image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+                technologies: ["Vue.js", "D3.js", "Python"],
                 category: "software",
-                link: "https://github.com/Harding10/barre-automatique",
-                icon: "robot",
-                status: "Version 1.0",
-                statusClass: "status-version"
+                link: "#",
+                icon: "chart-line",
+                status: "Version 2.0"
             },
+
+            
             {
                 id: 4,
                 title: "Système de Design",
@@ -535,15 +520,14 @@
                 id: 5,
                 title: "API RESTful",
                 description: "API performante pour applications mobiles et web avec authentification JWT et documentation Swagger.",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ", // YouTube avec autoplay et loop
-                videoType: "youtube", // Indique que c'est une vidéo YouTube
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
                 technologies: ["Node.js", "Express", "MongoDB"],
                 category: "software",
                 link: "#",
                 icon: "server",
-                status: "API v1.2",
-                statusClass: "status-api"
+                status: "API v1.2"
             },
+
             {
                 id: 6,
                 title: "Jeu Éducatif",
@@ -728,11 +712,21 @@
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
             displayProjects();
-            
-            // Animation de chargement initiale
-            setTimeout(() => {
-                document.getElementById('loadingBar').style.width = '0%';
-            }, 800);
+
+            // Observe les projets pour les animations
+            document.querySelectorAll('.project-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+        // Gestion des clics sur les détails des projets (à compléter selon vos besoins)
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.project-detail-btn')) {
+                const projectId = e.target.closest('.project-detail-btn').dataset.projectId;
+                // Ici vous pourriez ouvrir une modal avec plus de détails
+                console.log('Voir plus de détails pour le projet', projectId);
+                alert(`Détails du projet ${projectId} - Cette fonctionnalité peut être étendue avec une modal`);
+            }
         });
     </script>
 </body>
