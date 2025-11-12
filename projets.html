@@ -13,6 +13,8 @@
                     animation: {
                         'fade-in': 'fadeIn 0.6s ease-out forwards',
                         'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 3s infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -22,7 +24,17 @@
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: 0, transform: 'translateY(30px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' }
                         }
+                    },
+                    colors: {
+                        'dark-blue': '#0f172a',
+                        'light-blue': '#1e293b',
+                        'accent': '#3b82f6',
+                        'accent-hover': '#2563eb',
                     }
                 }
             }
@@ -30,112 +42,438 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .glass-card {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        * {
+            box-sizing: border-box;
         }
-
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+        }
+        
         .project-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
         }
-
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+        }
+        
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-color: rgba(59, 130, 246, 0.3);
         }
-
-        .tech-badge {
-            transition: all 0.2s ease;
-        }
-
-        .project-card:hover .tech-badge {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
+        
         .gradient-text {
-            background-image: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             background-size: 200% auto;
+            animation: gradient-shift 3s ease infinite;
         }
-
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
         .filter-btn {
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+        
         .filter-btn.active {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             color: white;
-            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
         }
-
-        .project-image {
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        
+        .category-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .project-card:hover .project-image {
-            transform: scale(1.05);
+        
+        .tech-badge {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tech-badge:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+        }
+        
+        .project-video-container {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+            background: #0f172a;
+        }
+        
+        .project-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .project-card:hover .project-video {
+            transform: scale(1.08);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-actions {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .video-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+        
+        .video-play-button:hover {
+            background: rgba(37, 99, 235, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-play-button i {
+            color: white;
+            font-size: 24px;
+            margin-left: 4px;
+        }
+        
+        .header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -150px;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+        
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 10%;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        .empty-state {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-count {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .back-button {
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .back-button:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        
+        .logo {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        
+        .status-online {
+            background: #10b981;
+            box-shadow: 0 0 6px #10b981;
+        }
+        
+        .status-available {
+            background: #3b82f6;
+            box-shadow: 0 0 6px #3b82f6;
+        }
+        
+        .status-version {
+            background: #f59e0b;
+            box-shadow: 0 0 6px #f59e0b;
+        }
+        
+        .status-kit {
+            background: #8b5cf6;
+            box-shadow: 0 0 6px #8b5cf6;
+        }
+        
+        .status-api {
+            background: #ec4899;
+            box-shadow: 0 0 6px #ec4899;
+        }
+        
+        .status-mobile {
+            background: #06b6d4;
+            box-shadow: 0 0 6px #06b6d4;
+        }
+        
+        .loading-bar {
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            width: 0%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            transition: width 0.3s ease;
+        }
+        
+        /* Styles pour les vidéos locales */
+        .local-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Contrôles vidéo personnalisés */
+        .video-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 20;
+        }
+        
+        .project-video-container:hover .video-controls {
+            opacity: 1;
+        }
+        
+        .control-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .control-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
         }
     </style>
 </head>
-<header class="flex items-center justify-between p-4 bg-white shadow">
-    <h1 class="text-xl font-bold"><i class="fas fa-leaf logo-icon"></i><span
-            class="text-blue-900 gap-2">Portfolio</span></h1>
-    <i class="fa-solid fa-turn-left" style="color: #070984;"><a href="index.html">retour</a></i>
-</header>
 
-<body class="bg-gray-50 font-sans antialiased">
+<body class="antialiased">
+    <div class="loading-bar" id="loadingBar"></div>
+    
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <header class="header flex items-center justify-between p-4 sticky top-0 z-40">
+        <h1 class="text-xl font-bold flex items-center">
+            <i class="fas fa-code text-accent mr-2"></i>
+            <span class="logo">Portfolio</span>
+            <span class="project-count" id="projectCount">6</span>
+        </h1>
+        <a href="index.html" class="back-button flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left" style="color: #cbd5e1;"></i>
+            <span>Retour</span>
+        </a>
+    </header>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16 animate-fade-in">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4">Mes <span class="gradient-text">projets</span></h2>
-            <div class="w-24 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full">
-            </div>
-            <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">Découvrez mes réalisations classées par catégorie
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 section-title">Mes <span class="gradient-text">projets</span></h2>
+            <p class="mt-8 text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                Découvrez une sélection de mes réalisations, allant du développement web aux applications mobiles et systèmes embarqués.
             </p>
         </div>
 
         <!-- Filtres -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <div class="flex flex-wrap justify-center gap-3 mb-12 animate-slide-up">
             <button
-                class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md active"
+                class="filter-btn px-5 py-2.5 rounded-full bg-light-blue border border-gray-700 shadow-sm hover:shadow-md active text-gray-200 hover:text-white transition-all duration-300"
                 data-filter="all">
                 <i class="fas fa-th mr-2"></i>Tous
             </button>
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+            <button class="filter-btn px-5 py-2.5 rounded-full bg-light-blue border border-gray-700 shadow-sm hover:shadow-md text-gray-200 hover:text-white transition-all duration-300"
                 data-filter="mini-projet">
-                <i class="fas fa-globe mr-2"></i>mini-projet
+                <i class="fas fa-puzzle-piece mr-2"></i>Mini-projets
             </button>
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+            <button class="filter-btn px-5 py-2.5 rounded-full bg-light-blue border border-gray-700 shadow-sm hover:shadow-md text-gray-200 hover:text-white transition-all duration-300"
                 data-filter="web">
                 <i class="fas fa-globe mr-2"></i>Sites Web
             </button>
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+            <button class="filter-btn px-5 py-2.5 rounded-full bg-light-blue border border-gray-700 shadow-sm hover:shadow-md text-gray-200 hover:text-white transition-all duration-300"
                 data-filter="app">
                 <i class="fas fa-mobile-alt mr-2"></i>Applications
             </button>
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+            <button class="filter-btn px-5 py-2.5 rounded-full bg-light-blue border border-gray-700 shadow-sm hover:shadow-md text-gray-200 hover:text-white transition-all duration-300"
                 data-filter="design">
                 <i class="fas fa-paint-brush mr-2"></i>Design
             </button>
-            <button class="filter-btn px-5 py-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md"
+            <button class="filter-btn px-5 py-2.5 rounded-full bg-light-blue border border-gray-700 shadow-sm hover:shadow-md text-gray-200 hover:text-white transition-all duration-300"
                 data-filter="software">
                 <i class="fas fa-laptop-code mr-2"></i>Logiciels
             </button>
         </div>
 
         <!-- Grille de projets -->
-        <div class="grid grid-cols-1.5 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
             <!-- Les projets seront injectés ici par JavaScript -->
         </div>
-
-
     </section>
 
     <script>
@@ -145,70 +483,121 @@
                 id: 1,
                 title: "Kivip E-commerce",
                 description: "Plateforme complète de vente en ligne avec système de paiement sécurisé et gestion des stocks.",
-                image: "photo/Kivip.png",
+                video: "photo/Kivip.mp4", // Remplacez par votre vidéo
+                videoType: "local", // Indique que c'est une vidéo locale
                 technologies: ["Firebase", "JavaScript", "Tailwind CSS"],
                 category: "web",
                 link: "https://kivip.vercel.app/",
                 icon: "globe",
-                status: "En ligne"
+                status: "En ligne",
+                statusClass: "status-online"
             },
             {
                 id: 2,
-                title: "Application Fitness",
-                description: "Bienvenue sur RapIdfy !\nNotre application en ligne est conçue pour vous aider à taper plus rapidement au clavier.\nGrâce à des exercices simples et adaptés à votre niveau,\nvous pourrez améliorer votre vitesse et votre précision en un rien de temps.\nCommencez dès maintenant et devenez un pro du clavier avec RapIdfy !",
-                image: "photo/rapidfy.png",
+                title: "RapIdfy - Application Fitness",
+                description: "Application en ligne conçue pour vous aider à taper plus rapidement au clavier grâce à des exercices adaptés.",
+                video: "photo/RapIdfy.mp4", // Remplacez par votre vidéo
+                videoType: "local", // Indique que c'est une vidéo locale
                 technologies: ["HTML", "CSS", "JavaScript"],
                 category: "web",
                 link: "https://harding10.github.io/rapidfy.github.com/",
-                icon: "globe",
-                status: "Disponible"
+                icon: "keyboard",
+                status: "Disponible",
+                statusClass: "status-available"
             },
-
             {
                 id: 3,
-                title: "Dashboard Analytics",
-                description: "Tableau de bord interactif pour la visualisation et l'analyse de données complexes.",
-                image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-                technologies: ["Vue.js", "D3.js", "Python"],
+                title: "Barrière Automatique",
+                description: "Système embarqué intelligent utilisant un capteur à ultrasons et servomoteur pour automatiser une barrière.",
+                video: "photo/barre-autio.mp4", // Remplacez par votre vidéo
+                videoType: "local", // Indique que c'est une vidéo locale
+                technologies: ["C++", "Arduino"],
                 category: "software",
-                link: "#",
-                icon: "chart-line",
-                status: "Version 2.0"
+                link: "https://github.com/Harding10/barre-automatique",
+                icon: "robot",
+                status: "Version 1.0",
+                statusClass: "status-version"
             },
             {
                 id: 4,
                 title: "Système de Design",
                 description: "Bibliothèque de composants UI pour maintenir une cohérence visuelle sur toutes les plateformes.",
-                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ", // YouTube avec autoplay et loop
+                videoType: "youtube", // Indique que c'est une vidéo YouTube
                 technologies: ["Figma", "Storybook", "Tailwind"],
                 category: "design",
                 link: "#",
-                icon: "paint-brush",
-                status: "UI Kit"
+                icon: "palette",
+                status: "UI Kit",
+                statusClass: "status-kit"
             },
             {
                 id: 5,
                 title: "API RESTful",
                 description: "API performante pour applications mobiles et web avec authentification JWT et documentation Swagger.",
-                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ", // YouTube avec autoplay et loop
+                videoType: "youtube", // Indique que c'est une vidéo YouTube
                 technologies: ["Node.js", "Express", "MongoDB"],
                 category: "software",
                 link: "#",
                 icon: "server",
-                status: "API v1.2"
+                status: "API v1.2",
+                statusClass: "status-api"
             },
             {
                 id: 6,
                 title: "Jeu Éducatif",
                 description: "Jeu interactif pour enfants avec apprentissage des mathématiques et suivi des progrès.",
-                image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ", // YouTube avec autoplay et loop
+                videoType: "youtube", // Indique que c'est une vidéo YouTube
                 technologies: ["Unity", "C#", "Firebase"],
                 category: "mini-projet",
                 link: "#",
                 icon: "gamepad",
-                status: "iOS/Android"
+                status: "iOS/Android",
+                statusClass: "status-mobile"
             }
         ];
+
+        // Fonction pour obtenir les couleurs par catégorie
+        function getCategoryColors(category) {
+            const colors = {
+                'web': { bg: 'bg-blue-900/30', text: 'text-blue-300', border: 'border-blue-500/30' },
+                'app': { bg: 'bg-purple-900/30', text: 'text-purple-300', border: 'border-purple-500/30' },
+                'design': { bg: 'bg-pink-900/30', text: 'text-pink-300', border: 'border-pink-500/30' },
+                'software': { bg: 'bg-green-900/30', text: 'text-green-300', border: 'border-green-500/30' },
+                'mini-projet': { bg: 'bg-orange-900/30', text: 'text-orange-300', border: 'border-orange-500/30' }
+            };
+            return colors[category] || colors['web'];
+        }
+
+        // Fonction pour créer le HTML de la vidéo selon son type
+        function createVideoElement(project) {
+            if (project.videoType === "local") {
+                return `
+                    <video class="local-video" autoplay loop muted playsinline>
+                        <source src="${project.video}" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                    <div class="video-controls">
+                        <button class="control-btn toggle-mute">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                    </div>
+                `;
+            } else {
+                // Pour YouTube, on utilise iframe avec les paramètres autoplay et loop
+                return `
+                    <iframe 
+                        src="${project.video}" 
+                        class="project-video"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            }
+        }
 
         // Fonction pour afficher les projets
         function displayProjects(filter = 'all') {
@@ -219,121 +608,131 @@
                 ? projects
                 : projects.filter(project => project.category === filter);
 
+            // Mettre à jour le compteur de projets
+            document.getElementById('projectCount').textContent = filteredProjects.length;
+
             if (filteredProjects.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full text-center py-12">
-                        <i class="fas fa-folder-open text-4xl text-gray-400 mb-4"></i>
-                        <p class="text-xl text-gray-600">Aucun projet trouvé dans cette catégorie</p>
+                    <div class="col-span-full empty-state text-center py-16 animate-fade-in">
+                        <i class="fas fa-folder-open text-5xl text-gray-500 mb-4"></i>
+                        <p class="text-xl text-gray-400">Aucun projet trouvé dans cette catégorie</p>
+                        <p class="text-gray-500 mt-2">Essayez une autre catégorie</p>
                     </div>
                 `;
                 return;
             }
 
             filteredProjects.forEach((project, index) => {
+                const colors = getCategoryColors(project.category);
                 const projectEl = document.createElement('div');
-                projectEl.className = `project-card glass-card rounded-xl overflow-hidden relative animate-fade-in`;
+                projectEl.className = `project-card animate-fade-in`;
                 projectEl.style.animationDelay = `${index * 0.1}s`;
 
-                // Détermine la couleur en fonction de la catégorie
-                let colorClass;
-                switch (project.category) {
-                    case 'mini-projet': colorClass = 'blue'; break;
-                    case 'web': colorClass = 'blue'; break;
-                    case 'app': colorClass = 'purple'; break;
-                    case 'design': colorClass = 'pink'; break;
-                    case 'software': colorClass = 'green'; break;
-                    default: colorClass = 'blue';
-                }
-
                 projectEl.innerHTML = `
-                    <div class="h-64 overflow-hidden relative group">
-                        <div class="absolute inset-0 bg-gradient-to-t from-${colorClass}-950/80 to-transparent z-10"></div>
-                        <img src="${project.image}" alt="${project.title}" 
-                            class="w-full h-full object-cover project-image">
-                        <div class="absolute bottom-4 left-4 z-20">
-                            <span class="inline-block px-3 py-1 bg-${colorClass}-600/90 text-white text-sm rounded-full shadow-md">
-                                ${project.status}
+                    <div class="project-video-container">
+                        ${createVideoElement(project)}
+                        <div class="project-overlay"></div>
+                        <div class="project-actions">
+                            <a href="${project.link}" target="_blank" 
+                                class="bg-accent text-white p-3 rounded-full shadow-lg hover:bg-accent-hover transition-colors transform hover:scale-110">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span class="category-badge ${colors.bg} ${colors.text} ${colors.border} border">
+                                ${project.category === 'app' ? 'Application' : 
+                                  project.category === 'web' ? 'Site Web' : 
+                                  project.category === 'software' ? 'Logiciel' : 
+                                  project.category === 'mini-projet' ? 'Mini Projet' : 'Design'}
                             </span>
                         </div>
                     </div>
+                    
                     <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-${colorClass}-500/10 flex items-center justify-center mr-4 hover:scale-110 transition-transform">
-                                <i class="fas fa-${project.icon} text-${colorClass}-400 text-xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-white">${project.title}</h3>
-                                <p class="text-sm text-${colorClass}-400 capitalize">${project.category === 'app' ? 'Application' : project.category === 'web' ? 'Site Web' : project.category === 'software' ? 'Logiciel' : 'Design'}</p>
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-xl font-bold text-white">${project.title}</h3>
+                            <div class="w-10 h-10 ${colors.bg} rounded-lg flex items-center justify-center flex-shrink-0 ml-4 border ${colors.border}">
+                                <i class="fas fa-${project.icon} ${colors.text}"></i>
                             </div>
                         </div>
-                        <p class="text-gray-400 mb-4">${project.description}</p>
-                        <div class="flex flex-wrap gap-2">
+                        
+                        <p class="text-gray-300 mb-4 leading-relaxed">${project.description}</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
                             ${project.technologies.map(tech => `
-                                <span class="tech-badge px-3 py-1 bg-${colorClass}-900/50 text-${colorClass}-400 rounded-full text-xs">
+                                <span class="tech-badge px-3 py-1.5 rounded-full text-xs font-medium">
                                     ${tech}
                                 </span>
                             `).join('')}
                         </div>
-                        <div class="mt-6 pt-4 border-t border-gray-700/50 flex justify-between items-center">
-                            <a href="${project.link}" target="_blank" class="text-${colorClass}-400 hover:text-${colorClass}-300 transition-colors">
-                                <i class="fas fa-external-link-alt mr-2"></i> Voir le projet
-                            </a>
-                            <button class="text-gray-400 hover:text-white transition-colors project-detail-btn" data-project-id="${project.id}">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
+                        
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-700">
+                            <span class="text-sm font-medium text-gray-300 flex items-center">
+                                <span class="status-indicator ${project.statusClass}"></span>
+                                ${project.status}
+                            </span>
+                            <div class="flex gap-2">
+                                <a href="${project.link}" target="_blank" 
+                                    class="text-sm text-accent hover:text-accent-hover transition-colors font-medium flex items-center gap-1">
+                                    Voir le projet
+                                    <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 `;
                 grid.appendChild(projectEl);
+                
+                // Ajouter les gestionnaires d'événements pour les contrôles vidéo
+                if (project.videoType === "local") {
+                    const videoContainer = projectEl.querySelector('.project-video-container');
+                    const video = videoContainer.querySelector('video');
+                    const muteBtn = videoContainer.querySelector('.toggle-mute');
+                    
+                    if (muteBtn) {
+                        muteBtn.addEventListener('click', function() {
+                            video.muted = !video.muted;
+                            muteBtn.innerHTML = video.muted ? 
+                                '<i class="fas fa-volume-mute"></i>' : 
+                                '<i class="fas fa-volume-up"></i>';
+                        });
+                    }
+                }
             });
         }
 
         // Gestion des filtres
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', function () {
-                // Met à jour l'état actif des boutons
                 document.querySelectorAll('.filter-btn').forEach(b => {
-                    b.classList.remove('active', 'bg-gradient-to-r', 'from-blue-600', 'to-purple-600', 'text-white');
-                    b.classList.add('bg-white', 'border', 'border-gray-200');
+                    b.classList.remove('active');
+                    b.classList.add('bg-light-blue', 'text-gray-200');
                 });
 
                 this.classList.add('active');
-                this.classList.remove('bg-white', 'border', 'border-gray-200');
+                this.classList.remove('bg-light-blue', 'text-gray-200');
 
-                // Filtre les projets
                 const filter = this.dataset.filter;
-                displayProjects(filter);
+                
+                // Animation de chargement
+                const loadingBar = document.getElementById('loadingBar');
+                loadingBar.style.width = '100%';
+                
+                setTimeout(() => {
+                    displayProjects(filter);
+                    loadingBar.style.width = '0%';
+                }, 300);
             });
         });
-
-        // Animation au scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
 
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
             displayProjects();
-
-            // Observe les projets pour les animations
-            document.querySelectorAll('.project-card').forEach(card => {
-                observer.observe(card);
-            });
-        });
-
-        // Gestion des clics sur les détails des projets (à compléter selon vos besoins)
-        document.addEventListener('click', function (e) {
-            if (e.target.closest('.project-detail-btn')) {
-                const projectId = e.target.closest('.project-detail-btn').dataset.projectId;
-                // Ici vous pourriez ouvrir une modal avec plus de détails
-                console.log('Voir plus de détails pour le projet', projectId);
-                alert(`Détails du projet ${projectId} - Cette fonctionnalité peut être étendue avec une modal`);
-            }
+            
+            // Animation de chargement initiale
+            setTimeout(() => {
+                document.getElementById('loadingBar').style.width = '0%';
+            }, 800);
         });
     </script>
 </body>

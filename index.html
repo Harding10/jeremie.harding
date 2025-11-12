@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description"
         content="Portfolio de Jeremie Harding, développeur web spécialisé en Laravel, React, et PHP. Découvrez mes projets, mes compétences et contactez-moi.">
     <title>Jeremie Harding - Portfolio</title>
@@ -67,8 +66,6 @@
             position: relative;
             overflow: hidden;
             background-color: var(--gris-clair);
-
-
         }
 
         /* Navbar améliorée */
@@ -112,11 +109,16 @@
             gap: 2.5rem;
         }
 
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texte);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
 
         .nav-links a:hover {
             color: blueviolet;
-
-
         }
 
         .nav-links a:hover::after {
@@ -380,6 +382,41 @@
             z-index: 0;
         }
 
+        /* Styles pour les sections */
+        section {
+            padding: 80px 0;
+        }
+
+        /* Styles pour la pyramide des compétences */
+        .pyramid-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .skill-item {
+            transition: all 0.3s ease;
+        }
+
+        /* Styles pour le carrousel des certifications */
+        .certifications-carousel {
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .certifications-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .certification-item {
+            flex: 0 0 33.333%;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
         /* Responsive amélioré */
         @media (max-width: 1200px) {
             .text-content h1 {
@@ -423,6 +460,10 @@
                 top: -300px;
                 right: -300px;
             }
+
+            .certification-item {
+                flex: 0 0 50%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -441,6 +482,10 @@
 
             .decor-dots {
                 display: none;
+            }
+
+            .certification-item {
+                flex: 0 0 100%;
             }
         }
 
@@ -461,21 +506,11 @@
                 justify-content: center;
             }
         }
-        
-
-
-
-
-
-
-        
-
-       
     </style>
 </head>
 
 <body>
-    <header>
+    <header id="accueil">
         <nav id="navbar">
             <div class="logo"><i class="fas fa-leaf logo-icon"></i>Port<span>folio</span></div>
             <div class="nav-links">
@@ -492,8 +527,8 @@
             <div class="text-content">
                 <span class="subtitle">Bonjour, je suis</span>
                 <h1><span>JEREMIE HARDING</span></h1>
-                <p>développeur Full Stack spécialisée dans la création d'interfaces modernes et
-                    intuitives. Je combine esthétique et fonctionnalité pour des produits digitaux mémorables.</p>
+                <p>Étudiant en deuxième année de Licence en Génie Informatique, je suis passionné par le développement
+                    web et mobile ainsi que par les systèmes embarqués (projets IoT connectés).</p>
 
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/jeremie-harding/"><i class="fab fa-linkedin-in"></i></a>
@@ -514,7 +549,7 @@
                     <img src="photo/me.png" alt="Photo de profil" class="profile-image">
                     <div class="image-overlay">
                         <h3>JEREMIE HARDING</h3>
-                        <p>développeuse Full Stack</p>
+                        <p>Développeur Full Stack</p>
                     </div>
                 </div>
             </div>
@@ -524,815 +559,738 @@
         <div class="decor-dots"></div>
     </header>
 
-    <body>
+    <!-- About Section -->
+    <section id="a-propos" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ À <span class="gradient-text">propos</span>
+                de moi }</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+        </div>
 
-        <!-- About Section -->
-        <section id="about" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="text-center mb-16 animate-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ À <span class="gradient-text">propos</span>
-                    de moi }</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center glass-card p-8 rounded-2xl hover-scale">
-                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center animate-in">
-                    <div class="relative w-64 h-64 rounded-2xl overflow-hidden border-2 border-blue-500/20">
-                        <img src="photo/IMG.jpg" alt="About" class="w-full h-full object-cover">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent">
-                        </div>
+        <div class="flex flex-col md:flex-row items-center glass-card p-8 rounded-2xl hover-scale">
+            <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center animate-in">
+                <div class="relative w-64 h-64 rounded-2xl overflow-hidden border-2 border-blue-500/20">
+                    <img src="photo/IMG.jpg" alt="About" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent">
                     </div>
-                </div>
-                <div class="md:w-2/3 md:pl-12 animate-in" style="animation-delay: 0.2s;">
-                    <h3 class="text-2xl font-semibold mb-6 title-font">Qui suis-je ?</h3>
-                    <p class="text-blue-900 mb-6"> Je suis étudiant en Licence 2 de Génie Informatique à l’Institut
-                        Universitaire d’Abidjan (IUA), passionné par la création d’interfaces utilisateur élégantes et
-                        d’applications web performantes. Mon approche allie sensibilité artistique et rigueur technique.
-                        J’aime travailler avec des technologies telles que Laravel et React.js, que j’utilise pour
-                        concevoir des solutions modernes et efficaces.</p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div class="bg-slate-400/50 p-6 rounded-xl hover-scale">
-                            <div class="flex items-center mb-4">
-                                <div
-                                    class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mr-4">
-                                    <i class="fas fa-palette text-blue-400 text-xl"></i>
-                                </div>
-                                <h4 class="font-medium text-lg">Design UI/UX</h4>
-                            </div>
-                            <p class="text-blue-900">Conception d'interfaces intuitives et esthétiques avec une
-                                attention particulière à l'expérience utilisateur.</p>
-                        </div>
-                        <div class="bg-slate-400/50 p-6 rounded-xl hover-scale">
-                            <div class="flex items-center mb-4">
-                                <div
-                                    class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
-                                    <i class="fas fa-code text-purple-400 text-xl"></i>
-                                </div>
-                                <h4 class="font-medium text-lg">Développement Web</h4>
-                            </div>
-                            <p class="text-blue-900">Création d'applications web modernes avec les dernières
-                                technologies et frameworks.</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </section>
+            <div class="md:w-2/3 md:pl-12 animate-in" style="animation-delay: 0.2s;">
+                <h3 class="text-2xl font-semibold mb-6 title-font">Qui suis-je ?</h3>
+                <p class="text-blue-900 mb-6"> Étudiant en deuxième année de Licence Génie Informatique à l'Institut
+                    Universitaire d'Abidjan (IUA), je suis développeur full-stack passionné par l'IA et les systèmes
+                    embarqués. J'aime transformer les idées en solutions élégantes et efficaces. Déterminé et
+                    enthousiaste, je relève chaque défi technique avec créativité et rigueur. Curieux et en
+                    apprentissage permanent, je considère chaque projet comme une opportunité d'innover et de
+                    progresser.</p>
 
-
-        <!-- Section Pyramide des Compétences -->
-        <section class="py-16 px-4 bg-gray-50">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">{ Mes Compétences }</h2>
-                <div class="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
-                <!-- Pyramide Container -->
-                <div class="pyramid-container">
-                    <!-- Niveau 1 (Base) - 5 items -->
-                    <div class="flex justify-center mb-[-1.5rem]">
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="HTML" title="HTML5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-slate-400/50 p-6 rounded-xl hover-scale">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-palette text-blue-400 text-xl"></i>
+                            </div>
+                            <h4 class="font-medium text-lg">Design UI/UX</h4>
                         </div>
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="CSS" title="CSS3">
+                        <p class="text-blue-900">Conception d'interfaces intuitives et esthétiques avec une
+                            attention particulière à l'expérience utilisateur.</p>
+                    </div>
+                    <!-- 22222222222 -->
+                    <div class="bg-slate-400/50 p-6 rounded-xl hover-scale">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-code text-purple-400 text-xl"></i>
+                            </div>
+                            <h4 class="font-medium text-lg">Développement Web</h4>
                         </div>
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="JavaScript" title="JavaScript">
-                        </div>
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="Git" title="Git">
-                        </div>
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="Laravel" title="Laravel">
-                        </div>
+                        <p class="text-blue-900">Création d'applications web, mobile modernes avec les dernières
+                            technologies et frameworks.</p>
                     </div>
 
-                    <!-- Niveau 2 - 4 items -->
-                    <div class="flex justify-center mb-[-1.5rem]">
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="React" title="React">
+                    <!-- TROISSSSSSSSSS -->
+                    <div class="bg-slate-400/50 p-6 rounded-xl hover-scale">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <h4 class="font-medium text-lg">IoT connectés</h4>
                         </div>
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="data:image/png;base64,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"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="Tailwind" title="Tailwind CSS">
-                        </div>
-
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="data:image/png;base64,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"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="Firebase" title="firebase">
-                        </div>
-
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="Node.js" title="Node.js">
-                        </div>
-                    </div>
-
-                    <!-- Niveau 3 - 3 items -->
-                    <div class="flex justify-center mb-[-1.5rem]">
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_lThaNg9hzYNfzT3IC7hGdBy8qijl4BM1cXWHr-p3X7M2Q=s900-c-k-c0x00ffffff-no-rj"
-                                class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full" alt="Mysql" title="Mysql">
-                        </div>
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full" alt="Express" title="Express">
-                        </div>
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="PostgreSQL" title="PostgreSQL">
-                        </div>
-                    </div>
-
-                    <!-- Niveau 4 - 2 items -->
-                    <div class="flex justify-center mb-[-1.5rem]">
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="Docker" title="Docker">
-                        </div>
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="TypeScript" title="TypeScript">
-                        </div>
-                    </div>
-
-                    <!-- Niveau 5 (Sommet) - 1 item -->
-                    <div class="flex justify-center">
-                        <div
-                            class="skill-item bg-white p-4 rounded-full shadow-lg m-2 border-2 border-blue-500 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                                class="w-14 h-14 md:w-16 md:h-16" alt="Python" title="Python">
-                        </div>
+                        <p class="text-blue-900">Créer de nouvelles expériences utilisateurs grâce à des objets
+                            intelligents.
+                        </p>
                     </div>
                 </div>
-        </section>
 
+            </div>
+        </div>
+    </section>
 
+    <!-- Section Pyramide des Compétences -->
+    <section id="services" class="py-16 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">{ Mes Compétences }</h2>
+            <div class="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
+            <!-- Pyramide Container -->
+            <div class="pyramid-container">
+                <!-- Niveau 1 (Base) - 5 items -->
+                <div class="flex justify-center mb-[-1.5rem]">
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/html5-css3-hd.jpg" class="w-14 h-14 md:w-16 md:h-16" alt="HTML" title="HTML5">
+                    </div>
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/tailwind.png" class="w-14 h-14 md:w-16 md:h-16" alt="Tailwind" title="Tailwind">
+                    </div>
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/js.svg" class="w-14 h-14 md:w-16 md:h-16" alt="JavaScript" title="JavaScript">
+                    </div>
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/git.svg" class="w-14 h-14 md:w-16 md:h-16" alt="Git" title="Git">
+                    </div>
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/Laravel.svg.png" class="w-14 h-14 md:w-16 md:h-16" alt="Laravel" title="Laravel">
+                    </div>
+                </div>
 
-        <!-- Work Experience - Creative Layout -->
-        <section id="work" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                    <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500 flex justify-center align-center">{
-                        Parcours }</span>
-                    <span class="text-gray-800 dark:text-white"> Professionnel</span>
-                </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-950 max-w-2xl mx-auto">
-                    Mes expériences passées et futures à travers le monde
-                </p>
+                <!-- Niveau 2 - 4 items -->
+                <div class="flex justify-center mb-[-1.5rem]">
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/react-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="React" title="React">
+                    </div>
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="crt/img-arduino.png" class="w-14 h-14 md:w-16 md:h-16" alt="Arduino" title="Arduino">
+                    </div>
+
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/firebase.png" class="w-14 h-14 md:w-16 md:h-16" alt="Firebase" title="firebase">
+                    </div>
+
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/nodejs-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="Node.js" title="Node.js">
+                    </div>
+                </div>
+
+                <!-- Niveau 3 - 3 items -->
+                <div class="flex justify-center mb-[-1.5rem]">
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/mysql.jpg" class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full" alt="Mysql" title="Mysql">
+                    </div>
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/express-original.svg" class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full" alt="Express" title="Express">
+                    </div>
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/postgresql-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="PostgreSQL" title="PostgreSQL">
+                    </div>
+                </div>
+
+                <!-- Niveau 4 - 2 items -->
+                <div class="flex justify-center mb-[-1.5rem]">
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/docker-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="Docker" title="Docker">
+                    </div>
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/typescript-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="TypeScript" title="TypeScript">
+                    </div>
+                </div>
+
+                <!-- Niveau 5 (Sommet) - 1 item -->
+                <div class="flex justify-center">
+                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 border-2 border-blue-500 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
+                        <img src="photo/python-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="Python" title="Python">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience - Creative Layout -->
+    <section id="work" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500 flex justify-center align-center">{ Experience }</span>
+                <span class="text-gray-800 dark:text-white"> Professionnel</span>
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-950 max-w-2xl mx-auto">
+               
+            </p>
+        </div>
+
+        <!-- Creative Grid Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <!-- Left Column - Timeline -->
+            <div class="md:col-span-4 relative">
+                <div class="sticky top-28 space-y-8">
+                    <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Évolution</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Mon parcours en tant que développeur Full Stack
+                        </p>
+                        <div class="mt-6 space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 rounded-full bg-indigo-500 mr-3"></div>
+                                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">2025 -
+                                    Présent</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 rounded-full bg-pink-500 mr-3"></div>
+                                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">.... -
+                                    Futur</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg text-white">
+                        <h3 class="text-xl font-bold mb-2">Compétences</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Développement Backend
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Développement Frontend
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Architecture Fullstack
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <!-- Creative Grid Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <!-- Left Column - Timeline -->
-                <div class="md:col-span-4 relative">
-                    <div class="sticky top-28 space-y-8">
-                        <div
-                            class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Évolution</h3>
-                            <p class="text-gray-600 dark:text-gray-300">Mon parcours en tant que développeuse Full Stack
-                            </p>
-                            <div class="mt-6 space-y-4">
-                                <div class="flex items-center">
-                                    <div class="w-3 h-3 rounded-full bg-indigo-500 mr-3"></div>
-                                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">2025 -
-                                        Présent</span>
+            <!-- Right Column - Experiences -->
+            <div class=" bg-gray-50 md:col-span-8 space-y-8">
+                <!-- Experience 1 -->
+                <div class="group relative bg-gray-50">
+                    <div class="absolute -inset-3 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    </div>
+                    <div class="relative p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-indigo-800 bg-indigo-100 dark:text-indigo-200 dark:bg-indigo-900/30 rounded-full mb-2">2025
+                                    - Présent</span>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Développeur et chef de
+                                    projet
+                                </h3>
+                                <h4 class="text-lg text-indigo-600 dark:text-indigo-400 mb-3">Encoure, Côte d'Ivoire
+                                </h4>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <div class="w-14 h-14 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                    </svg>
                                 </div>
-                                <div class="flex items-center">
-                                    <div class="w-3 h-3 rounded-full bg-pink-500 mr-3"></div>
-                                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">.... -
-                                        Futur</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                            Responsable de la conception et de l'implémentation des interfaces utilisateur, ainsi
+                            que de la coordination du backend dans le cadre d'une plateforme SaaS multi‑restaurant en version
+                            MVP. En charge de la répartition des tâches au sein de l'équipe et de la collaboration
+                            avec les développeurs pour offrir des expériences utilisateur optimales.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="group relative">
+                    <div class="absolute -inset-3 bg-gradient-to-r from-pink-100 to-purple-100 dark:from-pink-900/30 dark:to-purple-900/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    </div>
+                    <div class="relative p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-pink-800 bg-pink-100 dark:text-pink-200 dark:bg-pink-900/30 rounded-full mb-2">2025
+                                    - Présent
+                                    </span>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Ingénieur IoT
+                                </h3>
+                                <h4 class="text-lg text-pink-600 dark:text-pink-400 mb-3">Encoure, Côte d'Ivoire</h4>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <div class="w-14 h-14 rounded-lg bg-pink-50 dark:bg-pink-900/20 flex items-center justify-center text-pink-600 dark:text-pink-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                           ingénieur full-stack pour l'Internet des Objets (IoT),
+                           gérant à la fois la partie matérielle/embarquée et la partie logicielle/mobile
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="group relative">
+                    <div class="absolute -inset-3 bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900/30 dark:to-indigo-900/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    </div>
+                    <div class="relative p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                            <div>
+                                <span class="inline-block px-3 py-1 text-xs font-semibold text-purple-800 bg-purple-100 dark:text-purple-200 dark:bg-purple-900/30 rounded-full mb-2">2025
+                                    </span>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Designer UI/UX</h3>
+                                <h4 class="text-lg text-purple-600 dark:text-purple-400 mb-3">Projet(Professionnel), Cote D'ivoire
+                                </h4>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <div class="w-14 h-14 rounded-lg bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
+                            Conception d'interfaces utilisateur et d'expériences digitales .
+                            Création de wireframes, prototypes et design systems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projets" class="py-20 px-4 bg-white sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-in">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 font-sans">
+                Découvrez nos <span class="text-indigo-600">Réalisations</span>
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Un aperçu des projets récents qui témoignent de notre expertise et de notre créativité.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] animate-in">
+                <div class="h-56 overflow-hidden rounded-t-xl">
+                    <video src="photo/Kivip.mp4 " autoplay loop muted alt="Dashboard Analytics"   class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"></video>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Kivip E-commerce</h3>
+                    <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                        Solution complète de vente en ligne avec système de paiement sécurisé, gestion des stocks et tableau de bord analytique.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">Firebase</span>
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">JavaScript</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-medium">Tailwind CSS</span>
+                    </div>
+
+                    <a href="https://kivip.vercel.app/" target="_blank"
+                       class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-semibold transition duration-150">
+                        Visiter le site
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] animate-in"
+                 style="animation-delay: 0.1s;">
+                <div class="h-56 overflow-hidden rounded-t-xl">
+                    <video src="photo/RapIdfy.mp4 " autoplay loop muted alt="Dashboard Analytics"   class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"></video>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Site RapIdfy</h3>
+                    <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+                        Application en ligne conçue pour améliorer votre vitesse et précision de frappe au clavier grâce à des exercices simples et adaptés.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">HTML/CSS</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium">JavaScript</span>
+                    </div>
+                    <a href="https://harding10.github.io/rapidfy.github.com/" target="_blank"
+                       class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-semibold transition duration-150">
+                        Visiter le site
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.02] animate-in"
+                 style="animation-delay: 0.2s;">
+                <div class="h-56 overflow-hidden rounded-t-xl">
+                    <video src="photo/barre-autio.mp4 " autoplay loop muted alt="Barrière Automatique"   class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"></video>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Barrière Automatique</h3>
+                    <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+barrière automatique intelligente à l'aide d'un capteur à ultrasons HC-SR04, d'un servomoteur SG90, et de l'IDE Arduino                </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-violet-100 text-violet-800 rounded-full text-xs font-medium">C++</span>
+                    </div>
+                    <a href="https://github.com/Harding10/barre-automatique"
+                       class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-semibold transition duration-150">
+                        Détails du projet
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-16 animate-in" style="animation-delay: 0.3s;">
+            <a href="projets.html"
+                class="inline-flex items-center px-8 py-3 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 shadow-md hover:shadow-lg transition duration-300">
+                <span>Voir plus de projets</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!----------------------------------- Certifications Section ------------------------------------------------------->
+    <section id="certifications" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Mes <span
+                    class="gradient-text">certifications }</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+            <p class="text-gray-400 max-w-2xl mx-auto mt-6">Voici les certifications que j'ai obtenues dans
+                différentes spécialisations.</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl hover-scale">
+            <!-- Certifications Carousel -->
+            <div class="certifications-carousel relative">
+                <!-- Carousel Container -->
+                <div class="overflow-hidden">
+                    <div class="certifications-track flex transition-transform duration-500 ease-in-out" id="certifications-track">
+                        <!-- Certificat 1 -->
+                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                                <div class="h-64 overflow-hidden relative group">
+                                    <!-- Remplacez src par le chemin de votre image -->
+                                    <img src="crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg"
+                                        alt="Certificat Développement Web"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                        <a href="crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg"
+                                            target="_blank"
+                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                            <i class="fas fa-expand mr-2"></i> Agrandir
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold mb-2">Les bases du matériel informatique</h3>
+                                    <p class="text-white text-sm mb-4">Sisco - 2025</p>
+                                    <a href="lien-vers-certificat-numérique"
+                                        class="text-blue-400 hover:text-blue-300 text-sm font-medium inline-flex items-center"
+                                        target="_blank">
+                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div
-                            class="p-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg text-white">
-                            <h3 class="text-xl font-bold mb-2">Compétences</h3>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    Développement Backend
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    Développement Frontend
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    Architecture Fullstack
-                                </li>
-                            </ul>
+                        <!-- Certificat 2 -->
+                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                                <div class="h-64 overflow-hidden relative group">
+                                    <img src="crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg"
+                                        alt="Certificat UI/UX Design"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                        <a href="crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg"
+                                            target="_blank"
+                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                            <i class="fas fa-expand mr-2"></i> Agrandir
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold mb-2">Introduction à la cybersécurité </h3>
+                                    <p class="text-white text-sm mb-4">Sisco - 2025</p>
+                                    <a href="lien-vers-certificat-numérique"
+                                        class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
+                                        target="_blank">
+                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Right Column - Experiences -->
-                <div class=" bg-gray-50 md:col-span-8 space-y-8">
-                    <!-- Experience 1 -->
-                    <div class="group relative bg-gray-50">
-                        <div
-                            class="absolute -inset-3 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        </div>
-                        <div
-                            class="relative p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                                <div>
-                                    <span
-                                        class="inline-block px-3 py-1 text-xs font-semibold text-indigo-800 bg-indigo-100 dark:text-indigo-200 dark:bg-indigo-900/30 rounded-full mb-2">2025
-                                        - Présent</span>
-                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Développeur et chef de
-                                        projet
+                        <!-- Certificat 3 -->
+                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                                <div class="h-64 overflow-hidden relative group">
+                                    <img src="crt/Open-js.jpg" alt="Certificat UI/UX Design"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                        <a href="crt/Open-js.jpg" target="_blank"
+                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                            <i class="fas fa-expand mr-2"></i>openclassroom
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold mb-2">Apprenez à programmer avec JavaScript
                                     </h3>
-                                    <h4 class="text-lg text-indigo-600 dark:text-indigo-400 mb-3">...., Côte d'Ivoire
-                                    </h4>
+                                    <p class="text-white text-sm mb-4">OpenClassrooms - 2025</p>
+                                    <a href="https://openclassrooms.com/fr/course-certificates/8941051021"
+                                        class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
+                                        target="_blank">
+                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                    </a>
                                 </div>
-                                <div class="flex-shrink-0">
+                            </div>
+                        </div>
+
+                        <!-- Certificat 4 -->
+                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                                <div class="h-64 overflow-hidden relative group">
+                                    <img src="crt/Open-algo.jpg" alt="Certificat UI/UX Design"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                                     <div
-                                        class="w-14 h-14 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                        </svg>
+                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                        <a href="crt/Open-algo.jpg" target="_blank"
+                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                            <i class="fas fa-expand mr-2"></i> Agrandir
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
-                            <p class="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
-                                Responsable de la conception et de l’implémentation des interfaces utilisateur, ainsi
-                                que de la coordination du backend dans le cadre du développement d’un site en version
-                                MVP. En charge de la répartition des tâches au sein de l’équipe et de la collaboration
-                                avec les développeurs pour offrir des expériences utilisateur optimales.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Experience 2 -->
-                    <div class="group relative">
-                        <div
-                            class="absolute -inset-3 bg-gradient-to-r from-pink-100 to-purple-100 dark:from-pink-900/30 dark:to-purple-900/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        </div>
-                        <div
-                            class="relative p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                                <div>
-                                    <span
-                                        class="inline-block px-3 py-1 text-xs font-semibold text-pink-800 bg-pink-100 dark:text-pink-200 dark:bg-pink-900/30 rounded-full mb-2">....
-                                        - Futur</span>
-                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Développeur Full Stack
-                                    </h3>
-                                    <h4 class="text-lg text-pink-600 dark:text-pink-400 mb-3">WebCraft, Toulouse</h4>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold mb-2">Découvrez le fonctionnement des
+                                        algorithmes</h3>
+                                    <p class="text-white text-sm mb-4">OpenClassrooms - 2025</p>
+                                    <a href="https://openclassrooms.com/fr/course-certificates/3915930160"
+                                        class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
+                                        target="_blank">
+                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                    </a>
                                 </div>
-                                <div class="flex-shrink-0">
+                            </div>
+                        </div>
+
+                        <!-- Certificat 5 -->
+                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
+                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
+                                <div class="h-64 overflow-hidden relative group">
+                                    <img src="crt/certifica-dev-web.jpg" alt="Certificat Développeur Web"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                                     <div
-                                        class="w-14 h-14 rounded-lg bg-pink-50 dark:bg-pink-900/20 flex items-center justify-center text-pink-600 dark:text-pink-400">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                        </svg>
+                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                        <a href="crt/certifica-dev-web.jpg" target="_blank"
+                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                            <i class="fas fa-expand mr-2"></i> Agrandir
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
-                            <p class="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
-                                Développement d'applications web complètes, de la base de données à l'interface
-                                utilisateur. Participation à l'architecture technique et aux décisions de conception.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Experience 3 -->
-                    <div class="group relative">
-                        <div
-                            class="absolute -inset-3 bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900/30 dark:to-indigo-900/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        </div>
-                        <div
-                            class="relative p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                                <div>
-                                    <span
-                                        class="inline-block px-3 py-1 text-xs font-semibold text-purple-800 bg-purple-100 dark:text-purple-200 dark:bg-purple-900/30 rounded-full mb-2">2025
-                                        - Futur</span>
-                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Designer UI/UX</h3>
-                                    <h4 class="text-lg text-purple-600 dark:text-purple-400 mb-3">PixelPerfect, Atlanta
-                                    </h4>
-                                </div>
-                                <div class="flex-shrink-0">
-                                    <div
-                                        class="w-14 h-14 rounded-lg bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600 dark:text-purple-400">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                                        </svg>
-                                    </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold mb-2">web development</h3>
+                                    <p class="text-gray-400 text-sm mb-4">sololearn - 2025</p>
+                                    <a href="https://www.sololearn.com/certificates/CC-SPEPKGTU"
+                                        class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
+                                        target="_blank">
+                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <p class="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
-                                Conception d'interfaces utilisateur et d'expériences digitales pour des clients variés.
-                                Création de wireframes, prototypes et design systems.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="text-center mb-16 animate-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Mes <span class="gradient-text">projets
-                        }</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8">
-                <!-- Project 1 -->
-                <div
-                    class="project-card bg-blue-950  glass-card  rounded-xl overflow-hidden relative hover-scale animate-in">
-                    <div class="h-64 overflow-hidden">
-                        <img src="photo/Kivip.png" alt="Project 1"
-                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center mr-4">
-                                <a href="https://kivip.vercel.app/"><i class="fas fa-globe text-blue-400"></i></a>
-                            </div>
-                            <h3 class="text-xl text-white font-semibold">Kivip E-commerce</h3>
-                        </div>
-                        <p class="text-gray-400 mb-4">Solution complète de vente en ligne avec système de paiement
-                            sécurisé, gestion des stocks et tableau de bord analytique.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-xs">Firebase</span>
-                            <span class="px-3 py-1 bg-purple-900/50 text-purple-400 rounded-full text-xs">Js</span>
-                            <span class="px-3 py-1 bg-green-900/50 text-green-400 rounded-full text-xs">Tailwind
-                                CSS</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card bg-blue-950 glass-card rounded-xl overflow-hidden relative hover-scale animate-in"
-                    style="animation-delay: 0.1s;">
-                    <div class="h-64 overflow-hidden">
-                        <img src="photo/RapIdfy.png" alt="Project 2"
-                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
-                                <a href="https://harding10.github.io/rapidfy.github.com/"><i
-                                        class="fas fa-globe text-blue-400"></i></a>
-                            </div>
-                            <h3 class="text-xl text-white font-semibold">Site RapIdfy</h3>
-                        </div>
-                        <p class="text-gray-400 mb-4">Bienvenue sur RapIdfy!
-                            Notre application en ligne est conçue pour vous aider à taper plus rapidement au clavier.
-                            Grâce à des exercices simples et adaptés à votre niveau,
-                            vous pourrez améliorer votre vitesse et votre précision en un rien de temps.
-                            Commencez dès maintenant et devenez un pro du clavier avec RapIdfy !</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-xs">html-css
-                            </span>
-                            <span class="px-3 py-1 bg-red-900/50 text-red-400 rounded-full text-xs">javascript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card bg-blue-950 glass-card rounded-xl overflow-hidden relative hover-scale animate-in"
-                    style="animation-delay: 0.2s;">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
-                            alt="Project 3"
-                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center mr-4">
-                                <i class="fas fa-chart-line text-green-400"></i>
-                            </div>
-                            <h3 class="text-xl text-white font-semibold">Dashboard Analytics</h3>
-                        </div>
-                        <p class="text-gray-400 mb-4">Tableau de bord interactif pour la visualisation de données
-                            complexes avec options d'export PDF/Excel et personnalisation avancée.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-xs">Vue.js</span>
-                            <span class="px-3 py-1 bg-green-900/50 text-green-400 rounded-full text-xs">D3.js</span>
-                            <span class="px-3 py-1 bg-yellow-900/50 text-yellow-400 rounded-full text-xs">Python</span>
-                        </div>
-                    </div>
-                </div>
+                <!-- Navigation arrows -->
+                <button
+                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-slate-800/80 hover:bg-slate-700/80 w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
+                    id="certifications-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button
+                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-slate-800/80 hover:bg-slate-700/80 w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
+                    id="certifications-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
 
-            <div class="text-center mt-12 animate-in" style="animation-delay: 0.3s;">
-                <a href="projets.html"
-                    class="inline-flex items-center px-8 py-3 border border-blue-600 text-blue-400 hover:bg-blue-900/30 rounded-lg font-medium hover-scale">
-                    <span>Voir plus de projets</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+            <!-- Carousel indicators -->
+            <div class="flex justify-center mt-8 space-x-2" id="certifications-indicators">
+                <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
+                <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
+                <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
             </div>
-        </section>
+        </div>
+    </section>
 
+    <!------------------------------ ----------Contact Section -------------------------------------------------->
+    <section id="contact" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Me <span class="gradient-text">contacter
+                    }</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+        </div>
 
+        <div class="glass-card p-8 rounded-2xl hover-scale">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2 animate-in">
+                    <h3 class="text-2xl font-semibold mb-6 title-font">Parlons de votre projet</h3>
+                    <p class="text-gray-400 mb-8">Je suis toujours ouvert à discuter de nouveaux projets,
+                        opportunités de collaboration ou simplement pour faire connaissance. N'hésitez pas à me
+                        contacter.</p>
 
-
-
-
-
-
-
-
-
-        <!----------------------------------- Certifications Section ------------------------------------------------------->
-        <section id="certifications" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="text-center mb-16 animate-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Mes <span
-                        class="gradient-text">certifications }</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
-                <p class="text-gray-400 max-w-2xl mx-auto mt-6">Voici les certifications que j'ai obtenues dans
-                    différentes spécialisations.</p>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl hover-scale">
-                <!-- Certifications Carousel -->
-                <div class="certifications-carousel relative">
-                    <!-- Carousel Container -->
-                    <div class="overflow-hidden">
-                        <div class="flex transition-transform duration-500 ease-in-out" id="certifications-track">
-                            <!-- Certificat 1 -->
-                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                                <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                    <div class="h-64 overflow-hidden relative group">
-                                        <!-- Remplacez src par le chemin de votre image -->
-                                        <img src="crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg"
-                                            alt="Certificat Développement Web"
-                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <a href="crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg"
-                                                target="_blank"
-                                                class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                                <i class="fas fa-expand mr-2"></i> Agrandir
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="p-6">
-                                        <h3 class="text-xl font-semibold mb-2">Les bases du matériel informatique</h3>
-                                        <p class="text-white text-sm mb-4">Sisco - 2025</p>
-                                        <a href="lien-vers-certificat-numérique"
-                                            class="text-blue-400 hover:text-blue-300 text-sm font-medium inline-flex items-center"
-                                            target="_blank">
-                                            Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Certificat 2 -->
-                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                                <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                    <div class="h-64 overflow-hidden relative group">
-                                        <img src="crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg"
-                                            alt="Certificat UI/UX Design"
-                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <a href="crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg"
-                                                target="_blank"
-                                                class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                                <i class="fas fa-expand mr-2"></i> Agrandir
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="p-6">
-                                        <h3 class="text-xl font-semibold mb-2">Introduction à la cybersécurité </h3>
-                                        <p class="text-white text-sm mb-4">Sisco - 2025</p>
-                                        <a href="lien-vers-certificat-numérique"
-                                            class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
-                                            target="_blank">
-                                            Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Certificat 3 -->
-                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                                <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                    <div class="h-64 overflow-hidden relative group">
-                                        <img src="crt/Open-js.jpg" alt="Certificat UI/UX Design"
-                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <a href="crt/Open-js.jpg" target="_blank"
-                                                class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                                <i class="fas fa-expand mr-2"></i>openclassroom
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="p-6">
-                                        <h3 class="text-xl font-semibold mb-2">Apprenez à programmer avec JavaScript</h3>
-                                        <p class="text-white text-sm mb-4">OpenClassrooms - 2025</p>
-                                        <a href="https://openclassrooms.com/fr/course-certificates/8941051021"
-                                            class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
-                                            target="_blank">
-                                            Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Certificat 4 -->
-                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                                <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                    <div class="h-64 overflow-hidden relative group">
-                                        <img src="crt/Open-algo.jpg" alt="Certificat UI/UX Design"
-                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <a href="crt/Open-algo.jpg" target="_blank"
-                                                class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                                <i class="fas fa-expand mr-2"></i> Agrandir
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="p-6">
-                                        <h3 class="text-xl font-semibold mb-2">Découvrez le fonctionnement des algorithmes</h3>
-                                        <p class="text-white text-sm mb-4">OpenClassrooms - 2025</p>
-                                        <a href="https://openclassrooms.com/fr/course-certificates/3915930160"
-                                            class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
-                                            target="_blank">
-                                            Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Certificat 5 -->
-                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                                <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                    <div class="h-64 overflow-hidden relative group">
-                                        <img src="crt/certifica-dev-web.jpg" alt="Certificat Développeur Web"
-                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <a href="crt/certifica-dev-web.jpg" target="_blank"
-                                                class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                                <i class="fas fa-expand mr-2"></i> Agrandir
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="p-6">
-                                        <h3 class="text-xl font-semibold mb-2">web development</h3>
-                                        <p class="text-gray-400 text-sm mb-4">sololearn - 2025</p>
-                                        <a href="https://www.sololearn.com/certificates/CC-SPEPKGTU"
-                                            class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
-                                            target="_blank">
-                                            Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Certificat 6 -->
-                            <div class="w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                                <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                    <div class="h-64 overflow-hidden relative group">
-                                        <img src="chemin/vers/certificat3.jpg" alt="Certificat JavaScript"
-                                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <a href="chemin/vers/certificat3.jpg" target="_blank"
-                                                class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                                <i class="fas fa-expand mr-2"></i> Agrandir
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="p-6">
-                                        <h3 class="text-xl font-semibold mb-2">JavaScript Moderne</h3>
-                                        <p class="text-gray-400 text-sm mb-4">FreeCodeCamp - 2022</p>
-                                        <a href="lien-vers-certificat-numérique"
-                                            class="text-green-400 hover:text-green-300 text-sm font-medium inline-flex items-center"
-                                            target="_blank">
-                                            Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Ajoutez d'autres certificats ici en suivant le même modèle -->
-                        </div>
-                    </div>
-
-                    <!-- Navigation arrows -->
-                    <button
-                        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-slate-800/80 hover:bg-slate-700/80 w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
-                        id="certifications-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button
-                        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-slate-800/80 hover:bg-slate-700/80 w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
-                        id="certifications-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-
-                <!-- Carousel indicators -->
-                <div class="flex justify-center mt-8 space-x-2" id="certifications-indicators">
-                    <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
-                    <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
-                    <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!------------------------------ ----------Contact Section -------------------------------------------------->
-        <section id="contact" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="text-center mb-16 animate-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Me <span class="gradient-text">contacter
-                        }</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
-            </div>
-
-            <div class="glass-card p-8 rounded-2xl hover-scale">
-                <div class="flex flex-col md:flex-row gap-12">
-                    <div class="md:w-1/2 animate-in">
-                        <h3 class="text-2xl font-semibold mb-6 title-font">Parlons de votre projet</h3>
-                        <p class="text-gray-400 mb-8">Je suis toujours ouvert à discuter de nouveaux projets,
-                            opportunités de collaboration ou simplement pour faire connaissance. N'hésitez pas à me
-                            contacter.</p>
-
-                        <div class="space-y-6">
-                            <div class="flex items-center">
-                                <div
-                                    class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope text-blue-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium">Email</h4>
-                                    <a href="mailto:contact@example.com"
-                                        class="text-gray-400 hover:text-blue-400 transition-colors">behdehryjeremieharding@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
-                                <div
-                                    class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
-                                    <i class="fas fa-phone-alt text-purple-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium">Téléphone</h4>
-                                    <a href="tel:+2250142003284"
-                                        class="text-gray-400 hover:text-blue-400 transition-colors">+225 0142003284</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
-                                <div
-                                    class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt text-green-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium">Localisation</h4>
-                                    <p class="text-gray-400">Abidjan, Côte d'Ivoire</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-8">
-                            <h4 class="font-medium mb-4">Réseaux sociaux</h4>
-                            <div class="flex space-x-4">
-                                <a href="https://www.linkedin.com/in/jeremie-harding/" target="_blank"
-                                    class="w-12 h-12 rounded-full bg-slate-700 hover:bg-blue-600 flex items-center justify-center transition-colors hover-scale">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="#"
-                                    class="w-12 h-12 rounded-full bg-slate-700 hover:bg-blue-400 flex items-center justify-center transition-colors hover-scale">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="https://github.com/Harding10" target="_blank"
-                                    class="w-12 h-12 rounded-full bg-slate-700 hover:bg-purple-600 flex items-center justify-center transition-colors hover-scale">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#"
-                                    class="w-12 h-12 rounded-full bg-slate-700 hover:bg-pink-600 flex items-center justify-center transition-colors hover-scale">
-                                    <i class="fab fa-dribbble"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="md:w-1/2 animate-in" style="animation-delay: 0.2s;">
-                        <form action="https://formspree.io/f/xblkjnlo" method="POST" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-medium  text-blue-950 mb-2">Nom
-                                        complet</label>
-                                    <input type="text" name="name" id="name" required
-                                        class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
-                                </div>
-                                <div>
-                                    <label for="email"
-                                        class="block text-sm font-medium text-blue-950 mb-2">Email</label>
-                                    <input type="email" name="email" id="email" required
-                                        class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
-                                </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div
+                                class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-blue-400"></i>
                             </div>
                             <div>
-                                <label for="subject" class="block text-sm font-medium text-blue-950 mb-2">Sujet</label>
-                                <input type="text" name="subject" id="subject" required
+                                <h4 class="font-medium">Email</h4>
+                                <a href="mailto:behdehryjeremieharding@gmail.com"
+                                    class="text-gray-400 hover:text-blue-400 transition-colors">behdehryjeremieharding@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div
+                                class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Téléphone</h4>
+                                <a href="tel:+2250142003284"
+                                    class="text-gray-400 hover:text-blue-400 transition-colors">+225 0142003284</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div
+                                class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Localisation</h4>
+                                <p class="text-gray-400">Abidjan, Côte d'Ivoire</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-medium mb-4">Réseaux sociaux</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/jeremie-harding/" target="_blank"
+                                class="w-12 h-12 rounded-full bg-slate-700 hover:bg-blue-600 flex items-center justify-center transition-colors hover-scale">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 rounded-full bg-slate-700 hover:bg-blue-400 flex items-center justify-center transition-colors hover-scale">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://github.com/Harding10" target="_blank"
+                                class="w-12 h-12 rounded-full bg-slate-700 hover:bg-purple-600 flex items-center justify-center transition-colors hover-scale">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 rounded-full bg-slate-700 hover:bg-pink-600 flex items-center justify-center transition-colors hover-scale">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 animate-in" style="animation-delay: 0.2s;">
+                    <form action="https://formspree.io/f/xblkjnlo" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium  text-blue-950 mb-2">Nom
+                                    complet</label>
+                                <input type="text" name="name" id="name" required
                                     class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
                             </div>
                             <div>
-                                <label for="message"
-                                    class="block text-sm font-medium text-blue-950 mb-2">Message</label>
-                                <textarea name="message" id="message" rows="5" required
-                                    class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent"></textarea>
+                                <label for="email"
+                                    class="block text-sm font-medium text-blue-950 mb-2">Email</label>
+                                <input type="email" name="email" id="email" required
+                                    class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
                             </div>
-                            <button type="submit"
-                                class="w-full px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-medium hover-scale shadow-lg">
-                                Envoyer le message
-                            </button>
-                        </form>
-
-                    </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-blue-950 mb-2">Sujet</label>
+                            <input type="text" name="subject" id="subject" required
+                                class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="message"
+                                class="block text-sm font-medium text-blue-950 mb-2">Message</label>
+                            <textarea name="message" id="message" rows="5" required
+                                class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-medium hover-scale shadow-lg">
+                            Envoyer le message
+                        </button>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-
-        <!-- Footer -->
-        <footer class="py-12 px-4 sm:px-6 lg:px-8 glass-card bg-blue-950">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="mb-6 md:mb-0">
-                        <span class="text-2xl font-bold gradient-text text-white">Portfolio</span>
-                        <p class="text-gray-400 mt-2"><a href="https://www.linkedin.com/in/jeremie-harding/"
-                                target="_blank">&copy; Degry Jeremie Harding Beh.</a>Tous droits réservés</p>
-                    </div>
-                    <div class="flex space-x-6">
-                        <a href="https://www.linkedin.com/in/jeremie-harding/"
-                            class="text-gray-400 hover:text-blue-400 transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://github.com/Harding10"
-                            class="text-gray-400 hover:text-purple-400 transition-colors">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors">
-                            <i class="fab fa-dribbble"></i>
-                        </a>
-                    </div>
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 glass-card bg-blue-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-2xl font-bold gradient-text text-white">Portfolio</span>
+                    <p class="text-gray-400 mt-2"><a href="https://www.linkedin.com/in/jeremie-harding/"
+                            target="_blank">&copy; Degry Jeremie Harding Beh.</a>Tous droits réservés</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/jeremie-harding/"
+                        class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://github.com/Harding10"
+                        class="text-gray-400 hover:text-purple-400 transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
                 </div>
             </div>
-        </footer>
-
-
-
-    </body>
+        </div>
+    </footer>
 
     <script>
+        // Téléchargement du CV
+        document.querySelector('.nav-button').addEventListener('click', function() {
+            // Chemin vers votre fichier CV
+            const cvPath = 'crt/CV.pdf';
+            
+            // Créer un élément lien invisible pour le téléchargement
+            const link = document.createElement('a');
+            link.href = cvPath;
+            link.download = 'CV_Jeremie_Harding.pdf'; // Nom du fichier téléchargé
+            
+            // Simuler le clic sur le lien
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
         // Animation navbar au scroll
         window.addEventListener('scroll', function () {
             const navbar = document.getElementById('navbar');
@@ -1352,12 +1310,9 @@
             });
         });
 
-
-
-
         // Certifications Carousel
         const certTrack = document.getElementById('certifications-track');
-        const certItems = document.querySelectorAll('.certifications-carousel .flex-shrink-0');
+        const certItems = document.querySelectorAll('.certification-item');
         const certPrev = document.getElementById('certifications-prev');
         const certNext = document.getElementById('certifications-next');
         const certIndicators = document.getElementById('certifications-indicators').children;
@@ -1408,7 +1363,24 @@
                 updateCertCarousel();
             }
         });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     </script>
 </body>
-
 </html>
