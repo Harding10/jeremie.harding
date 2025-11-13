@@ -61,6 +61,13 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .project-card::before {
@@ -408,15 +415,31 @@
         .control-btn:hover {
             background: rgba(0, 0, 0, 0.9);
         }
+
+        /* Styles pour les vidéos de démonstration par défaut */
+        .demo-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: linear-gradient(45deg, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
     </style>
 </head>
-<header class="flex items-center justify-between p-4 bg-white shadow">
-    <h1 class="text-xl font-bold"><i class="fas fa-leaf logo-icon"></i><span
-            class="text-blue-900 gap-2">Portfolio</span></h1>
-    <i class="fa-solid fa-turn-left" style="color: #070984;"><a href="index.html">retour</a></i>
-</header>
 
 <body class="bg-gray-50 font-sans antialiased">
+    <!-- Barre de chargement -->
+    <div id="loadingBar" class="loading-bar"></div>
+
+    <!-- Header -->
+    <header class="header flex items-center justify-between p-4 bg-white shadow">
+        <h1 class="text-xl font-bold"><i class="fas fa-leaf logo-icon"></i><span class="text-blue-900 gap-2">Portfolio</span></h1>
+        <i class="fa-solid fa-turn-left" style="color: #070984;"><a href="index.html" class="back-button">retour</a></i>
+    </header>
 
     <!-- Projects Section -->
     <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -432,7 +455,8 @@
             <button
                 class="filter-btn px-5 py-2.5 rounded-full bg-light-blue border border-gray-700 shadow-sm hover:shadow-md active text-gray-200 hover:text-white transition-all duration-300"
                 data-filter="all">
-                <i class="fas fa-th mr-2"></i>Tous
+                <i class="fas fa-th mr-2"></i>Tous 
+                <span id="projectCount" class="project-count">0</span>
             </button>
             <button class="filter-btn px-5 py-2.5 rounded-full bg-light-blue border border-gray-700 shadow-sm hover:shadow-md text-gray-200 hover:text-white transition-all duration-300"
                 data-filter="mini-projet">
@@ -457,20 +481,20 @@
         </div>
 
         <!-- Grille de projets -->
-        <div class="grid grid-cols-1.5 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
             <!-- Les projets seront injectés ici par JavaScript -->
         </div>
     </section>
 
     <script>
-        // Données des projets
+        // Données des projets - TOUT EN VIDÉO
         const projects = [
             {
                 id: 1,
                 title: "Kivip E-commerce",
                 description: "Plateforme complète de vente en ligne avec système de paiement sécurisé et gestion des stocks.",
-                video: "photo/Kivip.mp4", // Remplacez par votre vidéo
-                videoType: "local", // Indique que c'est une vidéo locale
+                video: "photo/Kivip.mp4",
+                videoType: "local",
                 technologies: ["Firebase", "JavaScript", "Tailwind CSS"],
                 category: "web",
                 link: "https://kivip.vercel.app/",
@@ -480,9 +504,10 @@
             },
             {
                 id: 2,
-                title: "Application Fitness",
-                description: "Bienvenue sur RapIdfy !\nNotre application en ligne est conçue pour vous aider à taper plus rapidement au clavier.\nGrâce à des exercices simples et adaptés à votre niveau,\nvous pourrez améliorer votre vitesse et votre précision en un rien de temps.\nCommencez dès maintenant et devenez un pro du clavier avec RapIdfy !",
-                image: "photo/rapidfy.png",
+                title: "RapIdfy - Application de Frappe",
+                description: "Application web pour améliorer votre vitesse de frappe avec des exercices adaptés à votre niveau.",
+                video: "photo/RapIdfy.mp4",
+                videoType: "local",
                 technologies: ["HTML", "CSS", "JavaScript"],
                 category: "web",
                 link: "https://harding10.github.io/rapidfy.github.com/",
@@ -492,23 +517,23 @@
             },
             {
                 id: 3,
-                title: "Dashboard Analytics",
-                description: "Tableau de bord interactif pour la visualisation et l'analyse de données complexes.",
-                image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-                technologies: ["Vue.js", "D3.js", "Python"],
+                title: "Barrière Automatique",
+                description: " barrière automatique intelligente à l'aide d'un capteur à ultrasons HC-SR04, d'un servomoteur SG90, et de l'IDE Arduino  ",
+                video: "photo/barre-autio.mp4",
+                videoType: "local",
+                technologies: ["C++", "Arduino"],
                 category: "software",
                 link: "#",
                 icon: "chart-line",
-                status: "Version 2.0"
+                status: "Version 2.0",
+                statusClass: "status-version"
             },
-
-            
             {
                 id: 4,
                 title: "Système de Design",
                 description: "Bibliothèque de composants UI pour maintenir une cohérence visuelle sur toutes les plateformes.",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ", // YouTube avec autoplay et loop
-                videoType: "youtube", // Indique que c'est une vidéo YouTube
+                video: "#",
+                videoType: "local",
                 technologies: ["Figma", "Storybook", "Tailwind"],
                 category: "design",
                 link: "#",
@@ -520,20 +545,21 @@
                 id: 5,
                 title: "API RESTful",
                 description: "API performante pour applications mobiles et web avec authentification JWT et documentation Swagger.",
-                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                video: "#",
+                videoType: "local",
                 technologies: ["Node.js", "Express", "MongoDB"],
                 category: "software",
                 link: "#",
                 icon: "server",
-                status: "API v1.2"
+                status: "API v1.2",
+                statusClass: "status-api"
             },
-
             {
                 id: 6,
                 title: "Jeu Éducatif",
                 description: "Jeu interactif pour enfants avec apprentissage des mathématiques et suivi des progrès.",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ", // YouTube avec autoplay et loop
-                videoType: "youtube", // Indique que c'est une vidéo YouTube
+                video: "#",
+                videoType: "local",
                 technologies: ["Unity", "C#", "Firebase"],
                 category: "mini-projet",
                 link: "#",
@@ -542,6 +568,15 @@
                 statusClass: "status-mobile"
             }
         ];
+
+        // Observer pour les animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
 
         // Fonction pour obtenir les couleurs par catégorie
         function getCategoryColors(category) {
@@ -569,8 +604,7 @@
                         </button>
                     </div>
                 `;
-            } else {
-                // Pour YouTube, on utilise iframe avec les paramètres autoplay et loop
+            } else if (project.videoType === "youtube") {
                 return `
                     <iframe 
                         src="${project.video}" 
@@ -579,6 +613,17 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
+                `;
+            } else {
+                // Fallback pour vidéo manquante
+                return `
+                    <div class="demo-video">
+                        <div class="text-center">
+                            <i class="fas fa-video text-3xl mb-2 opacity-50"></i>
+                            <p>Vidéo de démonstration</p>
+                            <p class="text-xs opacity-70 mt-1">${project.title}</p>
+                        </div>
+                    </div>
                 `;
             }
         }
@@ -609,7 +654,7 @@
             filteredProjects.forEach((project, index) => {
                 const colors = getCategoryColors(project.category);
                 const projectEl = document.createElement('div');
-                projectEl.className = `project-card animate-fade-in`;
+                projectEl.className = `project-card`;
                 projectEl.style.animationDelay = `${index * 0.1}s`;
 
                 projectEl.innerHTML = `
@@ -652,7 +697,7 @@
                         
                         <div class="flex items-center justify-between pt-4 border-t border-gray-700">
                             <span class="text-sm font-medium text-gray-300 flex items-center">
-                                <span class="status-indicator ${project.statusClass}"></span>
+                                <span class="status-indicator ${project.statusClass || 'status-available'}"></span>
                                 ${project.status}
                             </span>
                             <div class="flex gap-2">
@@ -667,13 +712,16 @@
                 `;
                 grid.appendChild(projectEl);
                 
+                // Observer pour l'animation
+                observer.observe(projectEl);
+                
                 // Ajouter les gestionnaires d'événements pour les contrôles vidéo
                 if (project.videoType === "local") {
                     const videoContainer = projectEl.querySelector('.project-video-container');
                     const video = videoContainer.querySelector('video');
                     const muteBtn = videoContainer.querySelector('.toggle-mute');
                     
-                    if (muteBtn) {
+                    if (muteBtn && video) {
                         muteBtn.addEventListener('click', function() {
                             video.muted = !video.muted;
                             muteBtn.innerHTML = video.muted ? 
@@ -711,19 +759,26 @@
 
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
+            // Activer le premier filtre
+            document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+            
             displayProjects();
 
-            // Observe les projets pour les animations
-            document.querySelectorAll('.project-card').forEach(card => {
-                observer.observe(card);
-            });
+            // Ajouter les formes flottantes
+            const shapesContainer = document.createElement('div');
+            shapesContainer.className = 'floating-shapes';
+            shapesContainer.innerHTML = `
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            `;
+            document.querySelector('body').appendChild(shapesContainer);
         });
 
-        // Gestion des clics sur les détails des projets (à compléter selon vos besoins)
+        // Gestion des clics sur les détails des projets
         document.addEventListener('click', function (e) {
             if (e.target.closest('.project-detail-btn')) {
                 const projectId = e.target.closest('.project-detail-btn').dataset.projectId;
-                // Ici vous pourriez ouvrir une modal avec plus de détails
                 console.log('Voir plus de détails pour le projet', projectId);
                 alert(`Détails du projet ${projectId} - Cette fonctionnalité peut être étendue avec une modal`);
             }
