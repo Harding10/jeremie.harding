@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Portfolio de Jeremie Harding, développeur web spécialisé en Laravel, React, et PHP. Découvrez mes projets, mes compétences et contactez-moi.">
-    <title>Jeremie Harding </title>
+    <title>Jeremie Harding</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="shortcut icon" href="photo/logo.jpg" type="image/x-icon">
@@ -387,37 +387,516 @@
             padding: 80px 0;
         }
 
-        /* Styles pour la pyramide des compétences */
-        .pyramid-container {
+        /* Styles pour le nouveau carrousel 3D des compétences */
+        .skills-carousel-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .skills-container {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin-top: 40px;
-        }
-
-        .skill-item {
-            transition: all 0.3s ease;
-        }
-
-        /* Styles pour le carrousel des certifications */
-        .certifications-carousel {
-            position: relative;
-            overflow: hidden;
+            gap: 100px;
+            flex-wrap: wrap;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .certifications-track {
+        .skill-carousel-wrapper {
+            text-align: center;
+        }
+
+        .skill-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--vert-fonce);
+            position: relative;
+            display: inline-block;
+        }
+
+        .skill-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--vert-principal), var(--vert-clair));
+            border-radius: 2px;
+        }
+
+        #container-frontend, #container-backend {
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            animation-name: carousel-rotate;
+            animation-duration: 20s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+        }
+
+        .carousel:hover {
+            animation-duration: 8s;
+        }
+
+        @keyframes carousel-rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .carousel figure {
+            margin: 0;
+            display: block;
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 12px;
             display: flex;
-            transition: transform 0.5s ease;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(7, 9, 132, 0.1);
         }
 
-        .certification-item {
-            flex: 0 0 33.333%;
-            padding: 0 15px;
-            box-sizing: border-box;
+        .carousel figure:hover {
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            z-index: 10;
         }
 
-        /* Responsive amélioré */
+        .carousel figure img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* Positionnement des éléments du carrousel */
+        .carousel figure:nth-child(1) { transform: translate(-50%, -50%) rotateY(0deg) translateZ(250px); }
+        .carousel figure:nth-child(2) { transform: translate(-50%, -50%) rotateY(36deg) translateZ(250px); }
+        .carousel figure:nth-child(3) { transform: translate(-50%, -50%) rotateY(72deg) translateZ(250px); }
+        .carousel figure:nth-child(4) { transform: translate(-50%, -50%) rotateY(108deg) translateZ(250px); }
+        .carousel figure:nth-child(5) { transform: translate(-50%, -50%) rotateY(144deg) translateZ(250px); }
+        .carousel figure:nth-child(6) { transform: translate(-50%, -50%) rotateY(180deg) translateZ(250px); }
+        .carousel figure:nth-child(7) { transform: translate(-50%, -50%) rotateY(216deg) translateZ(250px); }
+        .carousel figure:nth-child(8) { transform: translate(-50%, -50%) rotateY(252deg) translateZ(250px); }
+        .carousel figure:nth-child(9) { transform: translate(-50%, -50%) rotateY(288deg) translateZ(250px); }
+        .carousel figure:nth-child(10) { transform: translate(-50%, -50%) rotateY(324deg) translateZ(250px); }
+
+        /* Animation du titre */
+        .anima-titulo {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        .anima-titulo:nth-child(1) { animation-delay: 0.1s; }
+        .anima-titulo:nth-child(2) { animation-delay: 0.2s; }
+        .anima-titulo:nth-child(3) { animation-delay: 0.3s; }
+        .anima-titulo:nth-child(4) { animation-delay: 0.4s; }
+        .anima-titulo:nth-child(5) { animation-delay: 0.5s; }
+        .anima-titulo:nth-child(6) { animation-delay: 0.6s; }
+        .anima-titulo:nth-child(7) { animation-delay: 0.7s; }
+        .anima-titulo:nth-child(8) { animation-delay: 0.8s; }
+        .anima-titulo:nth-child(9) { animation-delay: 0.9s; }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Styles pour le nouveau carrousel des certifications */
+        .certifications-carousel-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            gap: 60px;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .certifications-carousel-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .certifications-controls-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding-left: 40px;
+        }
+
+        .certifications-carousel-container-main {
+            width: 100%;
+            max-width: 500px;
+            height: 70vh;
+            position: relative;
+            perspective: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .certifications-carousel-track {
+            width: 450px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .certification-card {
+            position: absolute;
+            width: 400px;
+            height: 225px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+
+        .certification-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .certification-card.center {
+            z-index: 10;
+            transform: scale(1.1) translateZ(0);
+        }
+
+        .certification-card.center img {
+            filter: none;
+        }
+
+        .certification-card.up-2 {
+            z-index: 1;
+            transform: translateY(-300px) scale(0.8) translateZ(-300px);
+            opacity: 0.7;
+        }
+
+        .certification-card.up-2 img {
+            filter: grayscale(100%);
+        }
+
+        .certification-card.up-1 {
+            z-index: 5;
+            transform: translateY(-150px) scale(0.9) translateZ(-100px);
+            opacity: 0.9;
+        }
+
+        .certification-card.up-1 img {
+            filter: grayscale(100%);
+        }
+
+        .certification-card.down-1 {
+            z-index: 5;
+            transform: translateY(150px) scale(0.9) translateZ(-100px);
+            opacity: 0.9;
+        }
+
+        .certification-card.down-1 img {
+            filter: grayscale(100%);
+        }
+
+        .certification-card.down-2 {
+            z-index: 1;
+            transform: translateY(300px) scale(0.8) translateZ(-300px);
+            opacity: 0.7;
+        }
+
+        .certification-card.down-2 img {
+            filter: grayscale(100%);
+        }
+
+        .certification-card.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .certification-info {
+            text-align: center;
+            margin-top: 20px;
+            transition: all 0.5s ease-out;
+        }
+
+        .certification-name {
+            color: rgb(8, 42, 123);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .certification-name::before,
+        .certification-name::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            width: 80px;
+            height: 2px;
+            background: rgb(8, 42, 123);
+        }
+
+        .certification-name::before {
+            left: -100px;
+        }
+
+        .certification-name::after {
+            right: -100px;
+        }
+
+        .certification-issuer {
+            color: #848696;
+            font-size: 1.2rem;
+            font-weight: 500;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 5px 0;
+            margin-top: -10px;
+            position: relative;
+        }
+
+        .certifications-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .certifications-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(8, 42, 123, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .certifications-dot.active {
+            background: rgb(8, 42, 123);
+            transform: scale(1.2);
+        }
+
+        .certifications-nav-arrow {
+            position: relative;
+            background: transparent;
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            border: none;
+            outline: none;
+            margin: 0;
+            padding: 0;
+            overflow: visible;
+            box-shadow: none;
+        }
+
+        .certifications-nav-arrow:hover {
+            background: transparent;
+            transform: scale(1.2);
+            box-shadow: none;
+            border-color: transparent;
+        }
+
+        .certifications-nav-arrow img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: none;
+            transition: all 0.3s ease;
+        }
+
+        .certifications-nav-arrow:hover img {
+            filter: none;
+            transform: scale(1.1);
+        }
+
+        .certifications-nav-controls {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Modal pour voir les certificats en grand */
+        .certificate-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .certificate-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-prev {
+            left: 20px;
+        }
+
+        .modal-next {
+            right: 20px;
+        }
+
+        .modal-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-content:hover .modal-info {
+            transform: translateY(0);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .modal-issuer {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
         @media (max-width: 1200px) {
             .text-content h1 {
                 font-size: 3rem;
@@ -426,6 +905,80 @@
             .image-container {
                 width: 350px;
                 height: 350px;
+            }
+
+            .skills-container {
+                gap: 60px;
+            }
+
+            .certifications-carousel-container {
+                flex-direction: column;
+                height: auto;
+                gap: 20px;
+                max-width: 100%;
+            }
+
+            .certifications-carousel-section {
+                flex: none;
+                width: 100%;
+            }
+
+            .certifications-controls-section {
+                flex: none;
+                width: 100%;
+                padding-left: 0;
+                gap: 20px;
+            }
+
+            .certifications-carousel-container-main {
+                height: 60vh;
+                max-width: 350px;
+            }
+
+            .certification-card {
+                width: 320px;
+                height: 180px;
+            }
+
+            .certifications-carousel-track {
+                width: 350px;
+            }
+
+            .certification-card.up-2 {
+                transform: translateY(-160px) scale(0.8) translateZ(-300px);
+            }
+
+            .certification-card.up-1 {
+                transform: translateY(-80px) scale(0.9) translateZ(-100px);
+            }
+
+            .certification-card.down-1 {
+                transform: translateY(80px) scale(0.9) translateZ(-100px);
+            }
+
+            .certification-card.down-2 {
+                transform: translateY(160px) scale(0.8) translateZ(-300px);
+            }
+
+            .certification-name {
+                font-size: 1.8rem;
+            }
+
+            .certification-issuer {
+                font-size: 1rem;
+            }
+
+            .certification-name::before,
+            .certification-name::after {
+                width: 40px;
+            }
+
+            .certification-name::before {
+                left: -60px;
+            }
+
+            .certification-name::after {
+                right: -60px;
             }
         }
 
@@ -461,9 +1014,26 @@
                 right: -300px;
             }
 
-            .certification-item {
-                flex: 0 0 50%;
+            #container-frontend, #container-backend {
+                width: 250px;
+                height: 180px;
             }
+
+            .carousel figure {
+                width: 100px;
+                height: 100px;
+            }
+
+            .carousel figure:nth-child(1) { transform: translate(-50%, -50%) rotateY(0deg) translateZ(200px); }
+            .carousel figure:nth-child(2) { transform: translate(-50%, -50%) rotateY(36deg) translateZ(200px); }
+            .carousel figure:nth-child(3) { transform: translate(-50%, -50%) rotateY(72deg) translateZ(200px); }
+            .carousel figure:nth-child(4) { transform: translate(-50%, -50%) rotateY(108deg) translateZ(200px); }
+            .carousel figure:nth-child(5) { transform: translate(-50%, -50%) rotateY(144deg) translateZ(200px); }
+            .carousel figure:nth-child(6) { transform: translate(-50%, -50%) rotateY(180deg) translateZ(200px); }
+            .carousel figure:nth-child(7) { transform: translate(-50%, -50%) rotateY(216deg) translateZ(200px); }
+            .carousel figure:nth-child(8) { transform: translate(-50%, -50%) rotateY(252deg) translateZ(200px); }
+            .carousel figure:nth-child(9) { transform: translate(-50%, -50%) rotateY(288deg) translateZ(200px); }
+            .carousel figure:nth-child(10) { transform: translate(-50%, -50%) rotateY(324deg) translateZ(200px); }
         }
 
         @media (max-width: 768px) {
@@ -484,8 +1054,117 @@
                 display: none;
             }
 
-            .certification-item {
-                flex: 0 0 100%;
+            .skills-container {
+                flex-direction: column;
+                gap: 80px;
+            }
+
+            #container-frontend, #container-backend {
+                width: 220px;
+                height: 160px;
+            }
+
+            .carousel figure {
+                width: 90px;
+                height: 90px;
+            }
+
+            .carousel figure:nth-child(1) { transform: translate(-50%, -50%) rotateY(0deg) translateZ(180px); }
+            .carousel figure:nth-child(2) { transform: translate(-50%, -50%) rotateY(36deg) translateZ(180px); }
+            .carousel figure:nth-child(3) { transform: translate(-50%, -50%) rotateY(72deg) translateZ(180px); }
+            .carousel figure:nth-child(4) { transform: translate(-50%, -50%) rotateY(108deg) translateZ(180px); }
+            .carousel figure:nth-child(5) { transform: translate(-50%, -50%) rotateY(144deg) translateZ(180px); }
+            .carousel figure:nth-child(6) { transform: translate(-50%, -50%) rotateY(180deg) translateZ(180px); }
+            .carousel figure:nth-child(7) { transform: translate(-50%, -50%) rotateY(216deg) translateZ(180px); }
+            .carousel figure:nth-child(8) { transform: translate(-50%, -50%) rotateY(252deg) translateZ(180px); }
+            .carousel figure:nth-child(9) { transform: translate(-50%, -50%) rotateY(288deg) translateZ(180px); }
+            .carousel figure:nth-child(10) { transform: translate(-50%, -50%) rotateY(324deg) translateZ(180px); }
+
+            .certifications-carousel-container-main .certifications-nav-arrow {
+                display: flex;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70px;
+                height: 70px;
+                margin: 0;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            .certifications-carousel-container-main .certifications-nav-arrow:hover {
+                transform: translateX(-50%) scale(1.2);
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .certifications-carousel-container-main .certifications-nav-arrow.up:hover {
+                transform: translateX(-50%) scale(1.2);
+            }
+
+            .certifications-carousel-container-main .certifications-nav-arrow.down:hover {
+                transform: translateX(-50%) scale(1.2);
+            }
+
+            .certifications-carousel-container-main .certifications-nav-arrow.up {
+                top: 20px;
+                transform: translateX(-50%);
+            }
+
+            .certifications-carousel-container-main .certifications-nav-arrow.down {
+                bottom: 20px;
+                transform: translateX(-50%);
+            }
+
+            .certifications-carousel-container-main .certifications-nav-arrow.up img {
+                transform: rotate(-90deg);
+                width: 50px;
+                height: 50px;
+            }
+
+            .certifications-carousel-container-main .certifications-nav-arrow.down img {
+                transform: rotate(90deg);
+                width: 50px;
+                height: 50px;
+            }
+
+            .certifications-nav-controls {
+                display: none;
+            }
+
+            /* Modal responsive */
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .modal-prev {
+                left: 10px;
+            }
+
+            .modal-next {
+                right: 10px;
+            }
+
+            .modal-close {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .modal-title {
+                font-size: 1.2rem;
+            }
+
+            .modal-issuer {
+                font-size: 0.9rem;
             }
         }
 
@@ -504,6 +1183,36 @@
             .secondary-btn {
                 width: 100%;
                 justify-content: center;
+            }
+
+            #container-frontend, #container-backend {
+                width: 200px;
+                height: 140px;
+            }
+
+            .carousel figure {
+                width: 80px;
+                height: 80px;
+            }
+
+            .carousel figure:nth-child(1) { transform: translate(-50%, -50%) rotateY(0deg) translateZ(160px); }
+            .carousel figure:nth-child(2) { transform: translate(-50%, -50%) rotateY(36deg) translateZ(160px); }
+            .carousel figure:nth-child(3) { transform: translate(-50%, -50%) rotateY(72deg) translateZ(160px); }
+            .carousel figure:nth-child(4) { transform: translate(-50%, -50%) rotateY(108deg) translateZ(160px); }
+            .carousel figure:nth-child(5) { transform: translate(-50%, -50%) rotateY(144deg) translateZ(160px); }
+            .carousel figure:nth-child(6) { transform: translate(-50%, -50%) rotateY(180deg) translateZ(160px); }
+            .carousel figure:nth-child(7) { transform: translate(-50%, -50%) rotateY(216deg) translateZ(160px); }
+            .carousel figure:nth-child(8) { transform: translate(-50%, -50%) rotateY(252deg) translateZ(160px); }
+            .carousel figure:nth-child(9) { transform: translate(-50%, -50%) rotateY(288deg) translateZ(160px); }
+            .carousel figure:nth-child(10) { transform: translate(-50%, -50%) rotateY(324deg) translateZ(160px); }
+
+            .certification-card {
+                width: 280px;
+                height: 160px;
+            }
+
+            .certifications-carousel-track {
+                width: 300px;
             }
         }
     </style>
@@ -625,77 +1334,132 @@
         </div>
     </section>
 
-    <!-- Section Pyramide des Compétences -->
-    <section id="services" class="py-16 px-4 bg-gray-50">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">{ Mes Compétences }</h2>
-            <div class="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
-            <!-- Pyramide Container -->
-            <div class="pyramid-container">
-                <!-- Niveau 1 (Base) - 5 items -->
-                <div class="flex justify-center mb-[-1.5rem]">
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/html5-css3-hd.jpg" class="w-14 h-14 md:w-16 md:h-16" alt="HTML" title="HTML5">
-                    </div>
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/tailwind.png" class="w-14 h-14 md:w-16 md:h-16" alt="Tailwind" title="Tailwind">
-                    </div>
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/js.svg" class="w-14 h-14 md:w-16 md:h-16" alt="JavaScript" title="JavaScript">
-                    </div>
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/git.svg" class="w-14 h-14 md:w-16 md:h-16" alt="Git" title="Git">
-                    </div>
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/Laravel.svg.png" class="w-14 h-14 md:w-16 md:h-16" alt="Laravel" title="Laravel">
+    <!-- Nouvelle Section Compétences avec Carrousel 3D -->
+    <section id="services" class="skills-carousel-section">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Mes <span class="text-blue-600">Compétences</span> }</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8"></div>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Découvrez mes compétences techniques à travers cette visualisation interactive
+            </p>
+        </div>
+
+        <div class="skills-container">
+            <!-- Carrousel Frontend -->
+            <div class="skill-carousel-wrapper">
+                <h3 class="skill-title">
+                    <span class="anima-titulo">F</span>
+                    <span class="anima-titulo">r</span>
+                    <span class="anima-titulo">o</span>
+                    <span class="anima-titulo">n</span>
+                    <span class="anima-titulo">t</span>
+                    <span class="anima-titulo">e</span>
+                    <span class="anima-titulo">n</span>
+                    <span class="anima-titulo">d</span>
+                </h3>
+                <div id="container-frontend">
+                    <div class="carousel" id="carousel-frontend">
+                        <figure>
+                            <img src="photo/html5-css3-hd.jpg" alt="HTML5/CSS3">
+                        </figure>
+                        <figure>
+                            <img src="photo/js.svg" alt="JavaScript">
+                        </figure>
+                        <figure>
+                            <img src="photo/react-original.svg" alt="React">
+                        </figure>
+                        <figure>
+                            <img src="photo/tailwind.png" alt="Tailwind CSS">
+                        </figure>
+                        <figure>
+                            <img src="photo/typescript-original.svg" alt="TypeScript">
+                        </figure>
+                        <figure>
+                            <img src="photo/booststrap.jpeg" alt="TypeScript">
+                        </figure>
                     </div>
                 </div>
+            </div>
 
-                <!-- Niveau 2 - 4 items -->
-                <div class="flex justify-center mb-[-1.5rem]">
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/react-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="React" title="React">
-                    </div>
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="crt/img-arduino.png" class="w-14 h-14 md:w-16 md:h-16" alt="Arduino" title="Arduino">
-                    </div>
-
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/firebase.png" class="w-14 h-14 md:w-16 md:h-16" alt="Firebase" title="firebase">
-                    </div>
-
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/nodejs-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="Node.js" title="Node.js">
+            <!-- Carrousel Backend -->
+            <div class="skill-carousel-wrapper">
+                <h3 class="skill-title">
+                    <span class="anima-titulo">B</span>
+                    <span class="anima-titulo">a</span>
+                    <span class="anima-titulo">c</span>
+                    <span class="anima-titulo">k</span>
+                    <span class="anima-titulo">e</span>
+                    <span class="anima-titulo">n</span>
+                    <span class="anima-titulo">d</span>
+                </h3>
+                <div id="container-backend">
+                    <div class="carousel" id="carousel-backend">
+                        <figure>
+                            <img src="photo/Laravel.svg.png" alt="Laravel">
+                        </figure>
+                        <figure>
+                            <img src="photo/nodejs-original.svg" alt="Node.js">
+                        </figure>
+                        <figure>
+                            <img src="photo/php368.png" alt="Express">
+                        </figure>
+                        <figure>
+                            <img src="photo/mysql.jpg" alt="MySQL">
+                        </figure>
+                        <figure>
+                            <img src="photo/sql-1.png" alt="PostgreSQL">
+                        </figure>
+                        <figure>
+                            <img src="photo/firebase.png" alt="Firebase">
+                        </figure>
+                        <figure>
+                            <img src="photo/python-original.svg" alt="Python">
+                        </figure>
+                        <figure>
+                            <img src="crt/img-arduino.png" alt="Arduino">
+                        </figure>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Niveau 3 - 3 items -->
-                <div class="flex justify-center mb-[-1.5rem]">
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/mysql.jpg" class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full" alt="Mysql" title="Mysql">
-                    </div>
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/express-original.svg" class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full" alt="Express" title="Express">
-                    </div>
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/postgresql-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="PostgreSQL" title="PostgreSQL">
-                    </div>
-                </div>
 
-                <!-- Niveau 4 - 2 items -->
-                <div class="flex justify-center mb-[-1.5rem]">
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/docker-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="Docker" title="Docker">
-                    </div>
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/typescript-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="TypeScript" title="TypeScript">
-                    </div>
-                </div>
-
-                <!-- Niveau 5 (Sommet) - 1 item -->
-                <div class="flex justify-center">
-                    <div class="skill-item bg-white p-4 rounded-full shadow-lg m-2 border-2 border-blue-500 transform transition-all duration-300 hover:scale-110 hover:grayscale-0 grayscale-[30%]">
-                        <img src="photo/python-original.svg" class="w-14 h-14 md:w-16 md:h-16" alt="Python" title="Python">
+           <!-- Outils transversaux-->
+            <div class="skill-carousel-wrapper">
+                <h3 class="skill-title">
+                    <span class="anima-titulo">O</span>
+                    <span class="anima-titulo">u</span>
+                    <span class="anima-titulo">t</span>
+                    <span class="anima-titulo">i</span>
+                    <span class="anima-titulo">l</span>
+                    <span class="anima-titulo">s</span>
+                </h3>
+                <div id="container-backend">
+                    <div class="carousel" id="carousel-backend">
+                        <figure>
+                            <img src="photo/docker-original.svg" alt="Laravel">
+                        </figure>
+                        <figure>
+                            <img src="photo/postgresql-original.svg" alt="Node.js">
+                        </figure>
+                        <figure>
+                            <img src="photo/vercel.jpg" alt="Express">
+                        </figure>
+                        <figure>
+                            <img src="photo/Railway.svg" alt="MySQL">
+                        </figure>
+                        <figure>
+                            <img src="photo/postman.png" alt="PostgreSQL">
+                        </figure>
+                        <figure>
+                            <img src="photo/Figma.png" alt="MongoDB">
+                        </figure>
+                        <figure>
+                            <img src="photo/canva.jpeg" alt="Firebase">
+                        </figure>
+                        <figure>
+                            <img src="photo/docker-original.svg" alt="Docker">
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -955,184 +1719,71 @@ barrière automatique intelligente à l'aide d'un capteur à ultrasons HC-SR04, 
         </div>
     </section>
 
-    <!----------------------------------- Certifications Section ------------------------------------------------------->
+    <!-- Nouvelle Section Certifications avec Carrousel Vertical -->
     <section id="certifications" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16 animate-in">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Mes <span
-                    class="gradient-text">certifications }</span></h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Mes <span class="gradient-text">certifications }</span></h2>
             <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
-            <p class="text-gray-400 max-w-2xl mx-auto mt-6">Voici les certifications que j'ai obtenues dans
-                différentes spécialisations.</p>
+            <p class="text-gray-400 max-w-2xl mx-auto mt-6">Voici les certifications que j'ai obtenues dans différentes spécialisations.</p>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl hover-scale">
-            <!-- Certifications Carousel -->
-            <div class="certifications-carousel relative">
-                <!-- Carousel Container -->
-                <div class="overflow-hidden">
-                    <div class="certifications-track flex transition-transform duration-500 ease-in-out" id="certifications-track">
-                        <!-- Certificat 1 -->
-                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                <div class="h-64 overflow-hidden relative group">
-                                    <!-- Remplacez src par le chemin de votre image -->
-                                    <img src="crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg"
-                                        alt="Certificat Développement Web"
-                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                        <a href="crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg"
-                                            target="_blank"
-                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                            <i class="fas fa-expand mr-2"></i> Agrandir
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-semibold mb-2">Les bases du matériel informatique</h3>
-                                    <p class="text-white text-sm mb-4">Sisco - 2025</p>
-                                    <a href="lien-vers-certificat-numérique"
-                                        class="text-blue-400 hover:text-blue-300 text-sm font-medium inline-flex items-center"
-                                        target="_blank">
-                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
+        <div class="certifications-carousel-container">
+            <div class="certifications-carousel-section">
+                <div class="certifications-carousel-container-main">
+                    <button class="certifications-nav-arrow up">
+                        <i class="fas fa-chevron-up text-blue-600 text-2xl"></i>
+                    </button>
+                    <div class="certifications-carousel-track">
+                        <div class="certification-card" data-index="0">
+                            <img src="crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg" alt="Certificat Développement Web">
                         </div>
-
-                        <!-- Certificat 2 -->
-                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                <div class="h-64 overflow-hidden relative group">
-                                    <img src="crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg"
-                                        alt="Certificat UI/UX Design"
-                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                        <a href="crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg"
-                                            target="_blank"
-                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                            <i class="fas fa-expand mr-2"></i> Agrandir
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-semibold mb-2">Introduction à la cybersécurité </h3>
-                                    <p class="text-white text-sm mb-4">Sisco - 2025</p>
-                                    <a href="lien-vers-certificat-numérique"
-                                        class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
-                                        target="_blank">
-                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="certification-card" data-index="1">
+                            <img src="crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg" alt="Certificat UI/UX Design">
                         </div>
-
-                        <!-- Certificat 3 -->
-                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                <div class="h-64 overflow-hidden relative group">
-                                    <img src="crt/Open-js.jpg" alt="Certificat UI/UX Design"
-                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                        <a href="crt/Open-js.jpg" target="_blank"
-                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                            <i class="fas fa-expand mr-2"></i>openclassroom
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-semibold mb-2">Apprenez à programmer avec JavaScript
-                                    </h3>
-                                    <p class="text-white text-sm mb-4">OpenClassrooms - 2025</p>
-                                    <a href="https://openclassrooms.com/fr/course-certificates/8941051021"
-                                        class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
-                                        target="_blank">
-                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="certification-card" data-index="2">
+                            <img src="crt/Open-js.jpg" alt="Certificat JavaScript">
                         </div>
-
-                        <!-- Certificat 4 -->
-                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                <div class="h-64 overflow-hidden relative group">
-                                    <img src="crt/Open-algo.jpg" alt="Certificat UI/UX Design"
-                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                        <a href="crt/Open-algo.jpg" target="_blank"
-                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                            <i class="fas fa-expand mr-2"></i> Agrandir
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-semibold mb-2">Découvrez le fonctionnement des
-                                        algorithmes</h3>
-                                    <p class="text-white text-sm mb-4">OpenClassrooms - 2025</p>
-                                    <a href="https://openclassrooms.com/fr/course-certificates/3915930160"
-                                        class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
-                                        target="_blank">
-                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="certification-card" data-index="3">
+                            <img src="crt/Open-algo.jpg" alt="Certificat Algorithmes">
                         </div>
-
-                        <!-- Certificat 5 -->
-                        <div class="certification-item w-full md:w-1/2 lg:w-1/3 px-4 flex-shrink-0">
-                            <div class="bg-slate-800/50 rounded-xl overflow-hidden h-full hover-scale">
-                                <div class="h-64 overflow-hidden relative group">
-                                    <img src="crt/certifica-dev-web.jpg" alt="Certificat Développeur Web"
-                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                        <a href="crt/certifica-dev-web.jpg" target="_blank"
-                                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-lg text-sm flex items-center">
-                                            <i class="fas fa-expand mr-2"></i> Agrandir
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-semibold mb-2">web development</h3>
-                                    <p class="text-gray-400 text-sm mb-4">sololearn - 2025</p>
-                                    <a href="https://www.sololearn.com/certificates/CC-SPEPKGTU"
-                                        class="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
-                                        target="_blank">
-                                        Vérifier en ligne <i class="fas fa-external-link-alt ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="certification-card" data-index="4">
+                            <img src="crt/certifica-dev-web.jpg" alt="Certificat Développeur Web">
                         </div>
                     </div>
+                    <button class="certifications-nav-arrow down">
+                        <i class="fas fa-chevron-down text-blue-600 text-2xl"></i>
+                    </button>
                 </div>
-
-                <!-- Navigation arrows -->
-                <button
-                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-slate-800/80 hover:bg-slate-700/80 w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
-                    id="certifications-prev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button
-                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-slate-800/80 hover:bg-slate-700/80 w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
-                    id="certifications-next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
 
-            <!-- Carousel indicators -->
-            <div class="flex justify-center mt-8 space-x-2" id="certifications-indicators">
-                <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
-                <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
-                <button class="w-3 h-3 rounded-full bg-blue-500/50 hover:bg-blue-500 transition-colors"></button>
+            <div class="certifications-controls-section">
+                <div class="certifications-nav-controls">
+                    <button class="certifications-nav-arrow up">
+                        <img src="photo/top.png" alt="">
+                    </button>
+                    <button class="certifications-nav-arrow down">
+                        <img src="photo/down.png" alt="">
+
+                    </button>
+                </div>
+
+                <div class="certification-info">
+                    <h2 class="certification-name">Les bases du matériel informatique</h2>
+                    <p class="certification-issuer">Sisco - 2025</p>
+                </div>
+
+                <div class="certifications-dots">
+                    <div class="certifications-dot active" data-index="0"></div>
+                    <div class="certifications-dot" data-index="1"></div>
+                    <div class="certifications-dot" data-index="2"></div>
+                    <div class="certifications-dot" data-index="3"></div>
+                    <div class="certifications-dot" data-index="4"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!------------------------------ ----------Contact Section -------------------------------------------------->
+    <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 bg-gray-50 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16 animate-in">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 title-font">{ Me <span class="gradient-text">contacter
@@ -1274,6 +1925,26 @@ barrière automatique intelligente à l'aide d'un capteur à ultrasons HC-SR04, 
         </div>
     </footer>
 
+    <!-- Modal pour voir les certificats en grand -->
+    <div class="certificate-modal" id="certificateModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="modal-nav modal-prev" id="modalPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal-nav modal-next" id="modalNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <img src="" alt="Certificat" class="modal-image" id="modalImage">
+            <div class="modal-info">
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <p class="modal-issuer" id="modalIssuer"></p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Téléchargement du CV
         document.querySelector('.nav-button').addEventListener('click', function() {
@@ -1283,7 +1954,7 @@ barrière automatique intelligente à l'aide d'un capteur à ultrasons HC-SR04, 
             // Créer un élément lien invisible pour le téléchargement
             const link = document.createElement('a');
             link.href = cvPath;
-            link.download = 'CV_Jeremie_Harding.pdf'; // Nom du fichier téléchargé
+            link.download = 'cv/CV-Jeremie-Harding.pdf'; // Nom du fichier téléchargé
             
             // Simuler le clic sur le lien
             document.body.appendChild(link);
@@ -1310,57 +1981,218 @@ barrière automatique intelligente à l'aide d'un capteur à ultrasons HC-SR04, 
             });
         });
 
-        // Certifications Carousel
-        const certTrack = document.getElementById('certifications-track');
-        const certItems = document.querySelectorAll('.certification-item');
-        const certPrev = document.getElementById('certifications-prev');
-        const certNext = document.getElementById('certifications-next');
-        const certIndicators = document.getElementById('certifications-indicators').children;
+        // Nouveau Carrousel des Certifications
+        const certifications = [
+            { 
+                name: "Les bases du matériel informatique", 
+                issuer: "Sisco - 2025",
+                image: "crt/WhatsApp Image 2025-05-28 à 17.59.38_72c27fd9.jpg"
+            },
+            { 
+                name: "Introduction à la cybersécurité", 
+                issuer: "Sisco - 2025",
+                image: "crt/WhatsApp Image 2025-05-28 à 17.59.39_073b01b2.jpg"
+            },
+            { 
+                name: "Apprenez à programmer avec JavaScript", 
+                issuer: "OpenClassrooms - 2025",
+                image: "crt/Open-js.jpg"
+            },
+            { 
+                name: "Découvrez le fonctionnement des algorithmes", 
+                issuer: "OpenClassrooms - 2025",
+                image: "crt/Open-algo.jpg"
+            },
+            { 
+                name: "Web Development", 
+                issuer: "Sololearn - 2025",
+                image: "crt/certifica-dev-web.jpg"
+            }
+        ];
 
+        const certCards = document.querySelectorAll(".certification-card");
+        const certDots = document.querySelectorAll(".certifications-dot");
+        const certName = document.querySelector(".certification-name");
+        const certIssuer = document.querySelector(".certification-issuer");
+        const upArrows = document.querySelectorAll(".certifications-nav-arrow.up");
+        const downArrows = document.querySelectorAll(".certifications-nav-arrow.down");
         let currentCertIndex = 0;
-        const certItemWidth = certItems[0].offsetWidth;
-        const certVisibleItems = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+        let isAnimating = false;
 
-        function updateCertCarousel() {
-            const offset = -currentCertIndex * certItemWidth;
-            certTrack.style.transform = `translateX(${offset}px)`;
+        function updateCertificationsCarousel(newIndex) {
+            if (isAnimating) return;
+            isAnimating = true;
 
-            // Update indicators
-            for (let i = 0; i < certIndicators.length; i++) {
-                if (i === currentCertIndex) {
-                    certIndicators[i].classList.add('bg-blue-500');
-                    certIndicators[i].classList.remove('bg-blue-500/50');
+            currentCertIndex = (newIndex + certCards.length) % certCards.length;
+
+            certCards.forEach((card, i) => {
+                const offset = (i - currentCertIndex + certCards.length) % certCards.length;
+
+                card.classList.remove(
+                    "center",
+                    "up-1",
+                    "up-2",
+                    "down-1",
+                    "down-2",
+                    "hidden"
+                );
+
+                if (offset === 0) {
+                    card.classList.add("center");
+                } else if (offset === 1) {
+                    card.classList.add("down-1");
+                } else if (offset === 2) {
+                    card.classList.add("down-2");
+                } else if (offset === certCards.length - 1) {
+                    card.classList.add("up-1");
+                } else if (offset === certCards.length - 2) {
+                    card.classList.add("up-2");
                 } else {
-                    certIndicators[i].classList.add('bg-blue-500/50');
-                    certIndicators[i].classList.remove('bg-blue-500');
+                    card.classList.add("hidden");
+                }
+            });
+
+            certDots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === currentCertIndex);
+            });
+
+            certName.style.opacity = "0";
+            certIssuer.style.opacity = "0";
+
+            setTimeout(() => {
+                certName.textContent = certifications[currentCertIndex].name;
+                certIssuer.textContent = certifications[currentCertIndex].issuer;
+                certName.style.opacity = "1";
+                certIssuer.style.opacity = "1";
+            }, 300);
+
+            setTimeout(() => {
+                isAnimating = false;
+            }, 800);
+        }
+
+        upArrows.forEach(arrow => {
+            arrow.addEventListener("click", () => {
+                updateCertificationsCarousel(currentCertIndex - 1);
+            });
+        });
+
+        downArrows.forEach(arrow => {
+            arrow.addEventListener("click", () => {
+                updateCertificationsCarousel(currentCertIndex + 1);
+            });
+        });
+
+        certDots.forEach((dot, i) => {
+            dot.addEventListener("click", () => {
+                updateCertificationsCarousel(i);
+            });
+        });
+
+        certCards.forEach((card, i) => {
+            card.addEventListener("click", () => {
+                updateCertificationsCarousel(i);
+                openCertificateModal(i);
+            });
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowUp") {
+                updateCertificationsCarousel(currentCertIndex - 1);
+            } else if (e.key === "ArrowDown") {
+                updateCertificationsCarousel(currentCertIndex + 1);
+            }
+        });
+
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener("touchstart", (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+
+        document.addEventListener("touchend", (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleCertSwipe();
+        });
+
+        function handleCertSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartY - touchEndY;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    updateCertificationsCarousel(currentCertIndex + 1);
+                } else {
+                    updateCertificationsCarousel(currentCertIndex - 1);
                 }
             }
         }
 
-        certPrev.addEventListener('click', () => {
-            currentCertIndex = Math.max(currentCertIndex - 1, 0);
-            updateCertCarousel();
-        });
+        updateCertificationsCarousel(0);
 
-        certNext.addEventListener('click', () => {
-            currentCertIndex = Math.min(currentCertIndex + 1, certItems.length - certVisibleItems);
-            updateCertCarousel();
-        });
+        // Modal pour voir les certificats en grand
+        const certificateModal = document.getElementById('certificateModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalIssuer = document.getElementById('modalIssuer');
+        const modalClose = document.getElementById('modalClose');
+        const modalPrev = document.getElementById('modalPrev');
+        const modalNext = document.getElementById('modalNext');
 
-        // Click on indicators
-        for (let i = 0; i < certIndicators.length; i++) {
-            certIndicators[i].addEventListener('click', () => {
-                currentCertIndex = i;
-                updateCertCarousel();
-            });
+        let currentModalIndex = 0;
+
+        function openCertificateModal(index) {
+            currentModalIndex = index;
+            const cert = certifications[index];
+            
+            modalImage.src = cert.image;
+            modalTitle.textContent = cert.name;
+            modalIssuer.textContent = cert.issuer;
+            
+            certificateModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            const newVisibleItems = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
-            if (newVisibleItems !== certVisibleItems) {
-                currentCertIndex = 0;
-                updateCertCarousel();
+        function closeCertificateModal() {
+            certificateModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function navigateModal(direction) {
+            currentModalIndex = (currentModalIndex + direction + certifications.length) % certifications.length;
+            const cert = certifications[currentModalIndex];
+            
+            modalImage.src = cert.image;
+            modalTitle.textContent = cert.name;
+            modalIssuer.textContent = cert.issuer;
+            
+            // Mettre à jour aussi le carrousel principal
+            updateCertificationsCarousel(currentModalIndex);
+        }
+
+        // Événements pour la modal
+        modalClose.addEventListener('click', closeCertificateModal);
+        modalPrev.addEventListener('click', () => navigateModal(-1));
+        modalNext.addEventListener('click', () => navigateModal(1));
+
+        // Fermer la modal en cliquant à l'extérieur
+        certificateModal.addEventListener('click', (e) => {
+            if (e.target === certificateModal) {
+                closeCertificateModal();
+            }
+        });
+
+        // Navigation au clavier
+        document.addEventListener('keydown', (e) => {
+            if (certificateModal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeCertificateModal();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateModal(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateModal(1);
+                }
             }
         });
 
